@@ -108,7 +108,7 @@ export const About = () => {
                         </h3>
                         <div className="space-y-4 text-gray-300">
                             <div>
-                                <h4 className="font-semibold"> Customer Engineering Intern at OPEXUS (Jun. 2024 - Sep. 2024)</h4>
+                                <h4 className="font-semibold"> Software Engineering Intern at OPEXUS (Jun. 2024 - Sep. 2024)</h4>
                                 <p> Developed SQL mapping scripts and supported large-scale data migrations 
                                     for legacy system transitions in public sector software.</p>
                             </div>
