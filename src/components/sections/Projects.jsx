@@ -110,7 +110,7 @@ export const Projects = () => {
 
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> My Next Project </h3>
+                        <h3 className="text-xl font-bold mb-2"> What's Next... </h3>
                         <p className="text-gray-400 mb-4">
                             I'm working on building a workout tracker app for my phone. I currently pay for an easy
                             to use app, and I'd like to have my own that is free and my friends can use as well.                       

@@ -13,10 +13,9 @@ export const Home = () => {
                 </h1>
 
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                I'm a computer science student at Northeastern University with a 
-                concentration in artificial intelligence. I'm especially interested 
-                in back-end development and using machine learning to solve meaningful, 
-                real-world problems.
+                Welcome! This website introduces my latest projects as a third year computer 
+                science major at Northeastern University. Current projects and interests 
+                include solving real world problems using machine learning and back-end development.
                 </p>
                 <div className="flex justify-center space-x-4">
                     <a 
