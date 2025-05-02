@@ -38,6 +38,8 @@ export const Projects = () => {
                         <div className="flex justify-between items-center">
                             <a 
                                 href="https://github.com/RMahshie/LawSearch-AI" 
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
                                 View Project →</a>
