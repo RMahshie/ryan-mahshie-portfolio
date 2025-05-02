@@ -68,7 +68,9 @@ export const Projects = () => {
 
                         <div className="flex justify-between items-center">
                             <a 
-                                href="https://github.com/RMahshie/ASLClassifier" 
+                                href="https://github.com/RMahshie/ASLClassifier"
+                                target="_blank"
+                                rel="noopener noreferrer" 
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
                                 View Project →</a>
@@ -97,7 +99,9 @@ export const Projects = () => {
 
                         <div className="flex justify-between items-center">
                             <a 
-                                href="https://github.com/RMahshie/MacOS-ZSH-Shell" 
+                                href="https://github.com/RMahshie/MacOS-ZSH-Shell"
+                                target="_blank"
+                                rel="noopener noreferrer" 
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
                                 View Project →</a>
