@@ -21,6 +21,10 @@ function App() {
           } bg-black text-gray-100`}
       >
        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      {/* ✅ Add this overlay before MobileMenu */}
+      {menuOpen && (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 transition-opacity duration-300"></div>
+      )}
        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
        <Home />
        <About />
