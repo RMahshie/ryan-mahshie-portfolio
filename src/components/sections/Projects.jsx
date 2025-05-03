@@ -112,7 +112,7 @@ export const Projects = () => {
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
                         <h3 className="text-xl font-bold mb-2"> This Website </h3>
                         <p className="text-gray-400 mb-4">
-                            I made this website to be a portfolio of my work and a to explore Frontend programming.                       
+                            I made this website to be a portfolio of my work and way to explore Frontend programming.                       
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             {["JavaScript", "React", "Tailwind CSS", "Vite", "GitHub Pages", "Static Hosting", "Custom Domain"].map((tech, key) => (
