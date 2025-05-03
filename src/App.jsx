@@ -23,7 +23,7 @@ function App() {
        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {/* ✅ Add this overlay before MobileMenu */}
       {menuOpen && (
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 opacity-0 animate-fade-in"></div>
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 opacity-0 ${menuOpen ? 'animate-fade-in' : 'animate-fade-out'}`"></div>
       )}
        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
        <Home />
