@@ -35,14 +35,21 @@ export const Projects = () => {
                             ))}
                         </div>
 
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-start gap-6 items-center">
                             <a 
                                 href="https://github.com/RMahshie/LawSearch-AI" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
+                                className="text-purple-400 hover:text-purple-300 transition-colors my-5"
                             > 
                                 View Project →</a>
+                            <a 
+                                href="https://drive.google.com/file/d/1EsUQjmiFeGlnH7900i08dRjaDtF6015u/view?t=14" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-purple-400 hover:text-purple-300 transition-colors my-5"
+                            > 
+                                Watch Demo →</a>
                         </div>
                     </div>
 
