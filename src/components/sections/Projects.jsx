@@ -1,12 +1,73 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import { useState, useEffect } from "react";
 
 export const Projects = () => {
+    const [showVideoModal, setShowVideoModal] = useState(false);
+    
+    // Close modal when Escape key is pressed
+    useEffect(() => {
+        const handleEsc = (event) => {
+            if (event.key === 'Escape') {
+                setShowVideoModal(false);
+            }
+        };
+        window.addEventListener('keydown', handleEsc);
+        
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, []);
+
+    // Prevent scrolling when modal is open
+    useEffect(() => {
+        if (showVideoModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [showVideoModal]);
+    
+    // Google Drive embed URL conversion
+    // Convert from: https://drive.google.com/file/d/1EsUQjmiFeGlnH7900i08dRjaDtF6015u/view?t=14
+    // To: https://drive.google.com/file/d/1EsUQjmiFeGlnH7900i08dRjaDtF6015u/preview
+    const videoId = "1EsUQjmiFeGlnH7900i08dRjaDtF6015u";
+    const embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+    
     return (
         <RevealOnScroll>
         <section 
             id="projects" 
             className="min-h-screen flex items-center py-20"
         >
+            {/* Video Modal */}
+            {showVideoModal && (
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+                    <div className="relative w-full max-w-4xl bg-gray-900 rounded-lg overflow-hidden">
+                        <div className="aspect-video">
+                            <iframe 
+                                src={embedUrl}
+                                className="w-full h-full" 
+                                frameBorder="0" 
+                                allowFullScreen
+                                title="LawSearch AI Demo"
+                            ></iframe>
+                        </div>
+                        <button 
+                            onClick={() => setShowVideoModal(false)}
+                            className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-colors"
+                            aria-label="Close modal"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
           
             <div className="max-w-5xl mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center"> 
@@ -43,13 +104,11 @@ export const Projects = () => {
                                 className="text-purple-400 hover:text-purple-300 transition-colors my-5"
                             > 
                                 View Project →</a>
-                            <a 
-                                href="https://drive.google.com/file/d/1EsUQjmiFeGlnH7900i08dRjaDtF6015u/view?t=14" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-purple-400 hover:text-purple-300 transition-colors my-5"
+                            <button 
+                                onClick={() => setShowVideoModal(true)}
+                                className="text-purple-400 hover:text-purple-300 transition-colors my-5 cursor-pointer"
                             > 
-                                Watch Demo →</a>
+                                Watch Demo →</button>
                         </div>
                     </div>
 
