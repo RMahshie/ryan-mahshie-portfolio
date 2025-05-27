@@ -45,18 +45,17 @@ export const Projects = () => {
         >
             {/* Video Modal */}
             {showVideoModal && (
-                <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center pt-12 p-4 overflow-y-auto">
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center pt-20 p-4 overflow-y-auto">
                     <div className="relative w-full max-w-4xl mx-auto bg-gray-900 rounded-lg overflow-hidden max-h-[80vh]">
-                        {/* Close button positioned outside video with improved visibility */}
+                        {/* Close button positioned over video */}
                         <button 
                             onClick={() => setShowVideoModal(false)}
-                            className="absolute -top-12 right-0 bg-gray-900 text-white p-2.5 rounded-full 
-                                     border border-gray-700 shadow-lg
-                                     hover:bg-purple-600 hover:text-white hover:border-purple-500
-                                     hover:scale-110 transition-all duration-200"
+                            className="absolute top-3 right-3 bg-purple-600/80 text-white p-2.5 rounded-full 
+                                     border border-purple-500 shadow-lg z-10
+                                     hover:bg-purple-700 hover:scale-110 transition-all duration-200"
                             aria-label="Close modal"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
