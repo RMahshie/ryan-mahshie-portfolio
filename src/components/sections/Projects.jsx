@@ -18,18 +18,7 @@ export const Projects = () => {
         };
     }, []);
 
-    // Prevent scrolling when modal is open
-    useEffect(() => {
-        if (showVideoModal) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [showVideoModal]);
+    
     
     // Google Drive embed URL conversion
     // Convert from: https://drive.google.com/file/d/1EsUQjmiFeGlnH7900i08dRjaDtF6015u/view?t=14
