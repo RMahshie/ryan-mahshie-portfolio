@@ -35,7 +35,7 @@ export const Projects = () => {
             {/* Video Modal */}
             {showVideoModal && (
                 <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center pt-20 p-4 overflow-y-auto">
-                    <div className="relative w-full max-w-4xl mx-auto bg-gray-900 rounded-lg overflow-hidden max-h-[80vh]">
+                    <div className="relative w-full max-w-5xl mx-auto bg-gray-900 rounded-lg overflow-hidden max-h-[80vh]">
                         {/* Close button positioned over video */}
                         <button 
                             onClick={() => setShowVideoModal(false)}
@@ -50,14 +50,16 @@ export const Projects = () => {
                         </button>
                         
                         <div className="aspect-video">
-                            <iframe 
-                                src={embedUrl}
+                            <video 
+                                src="/LawSearchAI-Demo.mp4" 
                                 className="w-full h-full" 
-                                frameBorder="0" 
-                                allowFullScreen
-                                title="LawSearch AI Demo"
-                                allow="autoplay"
-                            ></iframe>
+                                controls
+                                autoPlay
+                                preload="auto"
+                                playsInline
+                            >
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
