@@ -45,8 +45,8 @@ export const Projects = () => {
         >
             {/* Video Modal */}
             {showVideoModal && (
-                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-                    <div className="relative w-full max-w-4xl bg-gray-900 rounded-lg overflow-hidden">
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto">
+                    <div className="relative w-full max-w-4xl mx-auto my-auto bg-gray-900 rounded-lg overflow-hidden max-h-[90vh]">
                         <div className="aspect-video">
                             <iframe 
                                 src={embedUrl}
@@ -54,6 +54,7 @@ export const Projects = () => {
                                 frameBorder="0" 
                                 allowFullScreen
                                 title="LawSearch AI Demo"
+                                allow="autoplay"
                             ></iframe>
                         </div>
                         <button 
