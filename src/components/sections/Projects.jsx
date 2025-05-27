@@ -45,8 +45,20 @@ export const Projects = () => {
         >
             {/* Video Modal */}
             {showVideoModal && (
-                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto">
-                    <div className="relative w-full max-w-4xl mx-auto my-auto bg-gray-900 rounded-lg overflow-hidden max-h-[90vh]">
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center pt-20 p-4 overflow-y-auto">
+                    <div className="relative w-full max-w-4xl mx-auto bg-gray-900 rounded-lg overflow-hidden max-h-[80vh]">
+                        {/* Close button positioned outside video */}
+                        <button 
+                            onClick={() => setShowVideoModal(false)}
+                            className="absolute -top-10 -right-2 bg-black/60 text-white p-2.5 rounded-full 
+                                      hover:bg-purple-600 hover:scale-110 transition-all duration-200"
+                            aria-label="Close modal"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        
                         <div className="aspect-video">
                             <iframe 
                                 src={embedUrl}
@@ -57,15 +69,6 @@ export const Projects = () => {
                                 allow="autoplay"
                             ></iframe>
                         </div>
-                        <button 
-                            onClick={() => setShowVideoModal(false)}
-                            className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-colors"
-                            aria-label="Close modal"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
                     </div>
                 </div>
             )}
