@@ -51,7 +51,7 @@ export const Projects = () => {
                         
                         <div className="aspect-video">
                             <video 
-                                src="/LawSearchAI-Demo.mp4" 
+                                src="/LawSearchAI-Demo.mov" 
                                 className="w-full h-full" 
                                 controls
                                 autoPlay
