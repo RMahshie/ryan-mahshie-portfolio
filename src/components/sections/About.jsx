@@ -4,7 +4,7 @@ export const About = () => {
     
     const frontendSkills = ["React", "TailwindCSS", "Vite", "JavaScript"]
     const backendSkills = ["Python", "Java", "SQL", "Git", "REST APIs", "ChromaDB"]
-    const aiSkills = ["Python", "LangChain", "PyTorch", "RAG Pipeline", "Classification", "Regression"]
+    const aiSkills = ["Python", "LangChain", "LangGraph", "PyTorch", "RAG Pipeline", "Classification", "Regression"]
     const devtoolSkills = ["VS Code", "MS SQL Server", "Jupyter Notebook", "Intelij", "Git"]
     
     return (

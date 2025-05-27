@@ -20,11 +20,11 @@ export const Projects = () => {
                         <h3 className="text-xl font-bold mb-2"> LawSearch AI </h3>
                         <p className="text-gray-400 mb-4">
                             An AI-powered question-answering system that uses 
-                            a RAG pipeline to retrieve and summarize key information 
+                            a dynamic RAG pipeline to retrieve and summarize key information 
                             from U.S. legislative documents.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            {["Python", "LangChain", "ChromaDB", "requests", "ChatGPT API", "Congressional API"].map((tech, key) => (
+                            {["Python", "LangChain", "LangGraph", "ChromaDB", "requests", "ChatGPT API", "Congressional API"].map((tech, key) => (
                                 <span 
                                     key={key}
                                     className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
