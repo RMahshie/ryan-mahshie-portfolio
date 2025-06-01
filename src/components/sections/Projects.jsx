@@ -179,7 +179,7 @@ export const Projects = () => {
                             (MCP), enabling AI to perform mathematical calculations through secure tool calls.                       
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            {["JavaScript", "React", "Tailwind CSS", "Vite", "GitHub Pages", "Static Hosting", "Custom Domain"].map((tech, key) => (
+                            {["Model Context Protocol (MCP)", "LangChain", "LangGraph", "OpenAI API", "FastMCP", "Python"].map((tech, key) => (
                                 <span 
                                     key={key}
                                     className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
