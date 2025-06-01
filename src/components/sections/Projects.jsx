@@ -161,7 +161,7 @@ export const Projects = () => {
                         
                         <div className="flex justify-between items-center">
                             <a 
-                                href="https://github.com/RMahshie/MCP-Calculator" 
+                                href="https://github.com/RMahshie/mcp-projects/tree/main/calculator" 
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
                                 View Project →</a>
