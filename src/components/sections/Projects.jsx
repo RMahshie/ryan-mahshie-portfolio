@@ -172,6 +172,36 @@ export const Projects = () => {
 
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
+                        <h3 className="text-xl font-bold mb-2"> MCP Calculator Demo </h3>
+                        <p className="text-gray-400 mb-4">
+                            This is a demonstration project that showcases how to integrate external 
+                            calculator tools with Large Language Models using the Model Context Protocol 
+                            (MCP), enabling AI to perform mathematical calculations through secure tool calls.                       
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            {["JavaScript", "React", "Tailwind CSS", "Vite", "GitHub Pages", "Static Hosting", "Custom Domain"].map((tech, key) => (
+                                <span 
+                                    key={key}
+                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                >
+                                    {tech} 
+                                </span>
+                            ))}
+                        </div>
+                        
+                        <div className="flex justify-between items-center">
+                            <a 
+                                href="https://github.com/RMahshie/MCP-Calculator" 
+                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
+                            > 
+                                View Project →</a>
+                        </div>
+                            
+                    </div>
+
+                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
                         <h3 className="text-xl font-bold mb-2"> This Website </h3>
                         <p className="text-gray-400 mb-4">
                             I made this website to be a portfolio of my work and way to explore Frontend programming.                       
