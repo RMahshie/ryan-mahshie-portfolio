@@ -93,14 +93,13 @@ export const About = () => {
                         <h3 className="text-xl font-bold mb-4">
                         🏫 Education
                         </h3>
-                        <ul className="list-disc list-inside text-gray-300 space-y-2">
-                            <li>
-                                <strong> B.S in Computer Science </strong> - Northeastern University (2023-2027)
-                            </li>
-                            <li>
-                                Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence
-                            </li>
-                        </ul>
+                        <div className="space-y-4 text-gray-300">
+                            <div>
+                                <h4 className="font-semibold">B.S in Computer Science - Northeastern University</h4>
+                                <p className="text-sm text-gray-400 mb-1">(2023 - 2027)</p>
+                                <p>Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence</p>
+                            </div>
+                        </div>
                     </div>
                     <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
                         <h3 className="text-xl font-bold mb-4">
