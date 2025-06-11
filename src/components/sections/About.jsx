@@ -108,7 +108,7 @@ export const About = () => {
                         </h3>
                         <div className="space-y-4 text-gray-300">
                             <div>
-                                <h4 className="font-semibold"> Software Engineering Intern at Pelagic-AI (Jun. 2025 - Jul. 2025)</h4>
+                                <h4 className="font-semibold text-sm sm:text-base leading-relaxed"> Software Engineering Intern at Pelagic AI (Jun. 2025 - Jul. 2025)</h4>
                                 <p> Working on AI applications for aerospace technology solutions.</p>
                             </div>
                             
