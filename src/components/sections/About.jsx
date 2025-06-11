@@ -108,18 +108,21 @@ export const About = () => {
                         </h3>
                         <div className="space-y-4 text-gray-300">
                             <div>
-                                <h4 className="font-semibold text-sm sm:text-base leading-relaxed"> Software Engineering Intern at Pelagic AI (Jun. 2025 - Jul. 2025)</h4>
+                                <h4 className="font-semibold"> Software Engineering Intern at Pelagic AI</h4>
+                                <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
                                 <p> Working on AI applications for aerospace technology solutions.</p>
                             </div>
                             
                             <div>
-                                <h4 className="font-semibold"> Software Engineering Intern at OPEXUS (Jun. 2024 - Sep. 2024)</h4>
+                                <h4 className="font-semibold"> Software Engineering Intern at OPEXUS</h4>
+                                <p className="text-sm text-gray-400 mb-1">(Jun. 2024 - Sep. 2024)</p>
                                 <p> Developed SQL mapping scripts and supported large-scale data migrations 
                                     for legacy system transitions in public sector software.</p>
                             </div>
 
                             <div>
-                                <h4 className="font-semibold"> Information Technology Volunteer at CEO (Dec. 2023 - Jun. 2024)</h4>
+                                <h4 className="font-semibold"> Information Technology Volunteer at CEO</h4>
+                                <p className="text-sm text-gray-400 mb-1">(Dec. 2023 - Jun. 2024)</p>
                                 <p>
                                 Migrated web content from a legacy CMS to Google Sites and integrated donation 
                                 and planning tools, improving accessibility and helping raise over $5,000 in online contributions.
