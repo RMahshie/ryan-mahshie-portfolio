@@ -2,7 +2,13 @@ import { useEffect } from "react";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
 
-        
+    // Handle click outside to close menu
+    const handleBackdropClick = (e) => {
+        // Check if the click target is the backdrop (not the menu items)
+        if (e.target === e.currentTarget) {
+            setMenuOpen(false);
+        }
+    };
 
     return (
         <div 
@@ -14,6 +20,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                             : "h-0 opacity-0 pointer-events-none"
                          }
                        `}
+            onClick={handleBackdropClick}
         >
             <button 
                 onClick={() => setMenuOpen(false)} 
@@ -21,10 +28,8 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                 aria-label="Close Menu"
             >
                 &times;
-
             </button>
 
-            
             <a 
                 href="#home"
                 onClick={() => setMenuOpen(false)} 
@@ -77,8 +82,6 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             > 
                 Contact
             </a>
-            
-
         </div>
     );
 };
