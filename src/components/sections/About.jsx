@@ -108,27 +108,27 @@ export const About = () => {
                         <div className="space-y-4 text-gray-300">
                             <div>
                                 <h4 className="font-semibold"> Software Engineering CO-OP at OpsCanvas</h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jul. 2025 - Dec. 2025)</p>
-                                <p> Incoming co-op working on automated cloud deployment</p>
+                                <p className="text-sm text-gray-400 mb-1 ml-4">(Jul. 2025 - Dec. 2025)</p>
+                                <p className="ml-4"> Incoming co-op working on automated cloud deployment</p>
                             </div>
 
                             <div>
                                 <h4 className="font-semibold"> Software Engineering Intern at Pelagic AI</h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
-                                <p> Working on AI applications for aerospace technology solutions.</p>
+                                <p className="text-sm text-gray-400 mb-1 ml-4">(Jun. 2025 - Jul. 2025)</p>
+                                <p className="ml-4"> Working on AI applications for aerospace technology solutions.</p>
                             </div>
                             
                             <div>
                                 <h4 className="font-semibold"> Software Engineering Intern at OPEXUS</h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jun. 2024 - Sep. 2024)</p>
-                                <p> Developed SQL mapping scripts and supported large-scale data migrations 
+                                <p className="text-sm text-gray-400 mb-1 ml-4">(Jun. 2024 - Sep. 2024)</p>
+                                <p className="ml-4"> Developed SQL mapping scripts and supported large-scale data migrations 
                                     for legacy system transitions in public sector software.</p>
                             </div>
 
                             <div>
                                 <h4 className="font-semibold"> Information Technology Volunteer at CEO</h4>
-                                <p className="text-sm text-gray-400 mb-1">(Dec. 2023 - Jun. 2024)</p>
-                                <p>
+                                <p className="text-sm text-gray-400 mb-1 ml-4">(Dec. 2023 - Jun. 2024)</p>
+                                <p className="ml-4">
                                 Migrated web content from a legacy CMS to Google Sites and integrated donation 
                                 and planning tools, improving accessibility and helping raise over $5,000 in online contributions.
                                 </p>
