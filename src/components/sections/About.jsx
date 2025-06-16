@@ -97,7 +97,7 @@ export const About = () => {
                             <div>
                                 <h4 className="font-semibold">B.S in Computer Science - Northeastern University</h4>
                                 <p className="text-sm text-gray-400 mb-1">(2023 - 2027)</p>
-                                <p>• Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence</p>
+                                <p className="ml-4">• Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence</p>
                             </div>
                         </div>
                     </div>
