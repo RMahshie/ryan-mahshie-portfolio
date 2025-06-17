@@ -113,7 +113,7 @@ export const About = () => {
                             </div>
 
                             <div>
-                                <h4 className="font-semibold"> Software Engineering Intern at Pelagic AI</h4>
+                                <h4 className="font-semibold"> Software Engineering Intern at <a href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">Pelagic AI</a></h4>
                                 <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
                                 <p className="ml-4">• Working on AI applications for aerospace technology solutions.</p>
                             </div>
@@ -126,7 +126,7 @@ export const About = () => {
                             </div>
 
                             <div>
-                                <h4 className="font-semibold"> Information Technology Volunteer at CEO</h4>
+                                <h4 className="font-semibold"> Information Technology Volunteer at <a href="https://www.ceoforthepeople.org/home" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">CEO</a></h4>
                                 <p className="text-sm text-gray-400 mb-1">(Dec. 2023 - Jun. 2024)</p>
                                 <p className="ml-4">•
                                 Migrated web content from a legacy CMS to Google Sites and integrated donation 
