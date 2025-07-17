@@ -113,9 +113,9 @@ export const About = () => {
                             </div>
 
                             <div>
-                                <h4 className="font-semibold"> Software Engineering Intern at <a href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">Pelagic AI</a></h4>
+                                <h4 className="font-semibold"> AI Software Engineering Intern at <a href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">Pelagic AI</a></h4>
                                 <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
-                                <p className="ml-4">• Working on AI applications for aerospace technology solutions.</p>
+                                <p className="ml-4">• Engineered an AI-driven satellite simulation with autonomous agents, GraphX-based airport modeling, and Model Context Protocol integration for geospatial reasoning.</p>
                             </div>
                             
                             <div>
