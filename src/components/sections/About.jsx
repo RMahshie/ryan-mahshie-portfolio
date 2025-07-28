@@ -109,7 +109,7 @@ export const About = () => {
                             <div>
                                 <h4 className="font-semibold"> Software Engineering Co-op at <a href="https://www.linkedin.com/company/opscanvas/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">OpsCanvas</a></h4>
                                 <p className="text-sm text-gray-400 mb-1">(Jul. 2025 - Dec. 2025)</p>
-                                <p className="ml-4">• Incoming co-op working on automated cloud deployment</p>
+                                <p className="ml-4">• Co-op working on AWS and Azure cloud monitoring software.</p>
                             </div>
 
                             <div>
