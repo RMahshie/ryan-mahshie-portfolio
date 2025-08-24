@@ -3,10 +3,10 @@ import { RevealOnScroll } from "../RevealOnScroll";
 export const About = () => {
     
     const frontendSkills = ["React", "TailwindCSS", "Vite", "JavaScript"]
-    const backendSkills = ["Python", "Java", "SQL", "Git", "REST APIs", "ChromaDB"]
+    const backendSkills = ["Python", "Go", "Java", "Huma", "AWS", "Azure", "Cloud Deployment",]
     const aiSkills = ["Python", "LangChain", "LangGraph", "PyTorch", "RAG Pipeline", "Classification", "Regression"]
-    const devtoolSkills = ["VS Code", "MS SQL Server", "Jupyter Notebook", "Intelij", "Git"]
-    
+    const devtoolSkills = ["Github + Gitlab", "VS Code", "CI/CD", "Docker", "Harbor", "Kubernetes"]
+
     return (
         <RevealOnScroll>
         <section 
@@ -109,7 +109,7 @@ export const About = () => {
                             <div>
                                 <h4 className="font-semibold"> Software Engineering Co-op at <a href="https://www.linkedin.com/company/opscanvas/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">OpsCanvas</a></h4>
                                 <p className="text-sm text-gray-400 mb-1">(Jul. 2025 - Dec. 2025)</p>
-                                <p className="ml-4">• Co-op working on AWS and Azure cloud monitoring software.</p>
+                                <p className="ml-4">• Co-op working on AWS and Azure cloud monitoring software. Primarily working with Go, Python, Microsoft Bicep.</p>
                             </div>
 
                             <div>
