@@ -3,7 +3,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 export const About = () => {
     
     const frontendSkills = ["React", "TailwindCSS", "Vite", "JavaScript"]
-    const backendSkills = ["Python", "Go", "Java", "Huma", "AWS", "Azure", "Cloud Deployment",]
+    const backendSkills = ["Python", "Go", "Java", "Huma", "FastAPI", "AWS", "Azure", "Cloud Deployment",]
     const aiSkills = ["Python", "LangChain", "LangGraph", "PyTorch", "RAG Pipeline", "Classification", "Regression"]
     const devtoolSkills = ["Github + Gitlab", "VS Code", "CI/CD", "Docker", "Harbor", "Kubernetes"]
 
@@ -19,12 +19,11 @@ export const About = () => {
                 </h2>
                 <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
                     <p className="text-gray-300 mb-6">
-                    I'm Ryan Mahshie, a computer science student at Northeastern University with a 
-                    concentration in artificial intelligence. I’m passionate about building practical, 
-                    backend-driven systems and using AI to solve real-world problems. My experience ranges 
-                    from developing RAG pipelines and image classifiers to working on data migrations and 
-                    system restructuring during my internship at OPEXUS. I’m always looking to grow as a 
-                    developer, take on meaningful challenges, and build things that make a real impact.
+                    I’m Ryan Mahshie, a computer science student at Northeastern University concentrating in AI. 
+                    I’m passionate about backend development, focusing on building systems that keep services 
+                    connected and data consistent. My experience includes backend infrastructure spanning AWS 
+                    and Azure as well as AI-driven projects such as RAG pipelines and research agents. I am 
+                    committed to continually growing as an engineer and taking on meaningful challenges.
                     </p>
                 
 
