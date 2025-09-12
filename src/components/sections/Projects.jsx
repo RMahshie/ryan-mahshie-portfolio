@@ -94,7 +94,7 @@ export const Projects = () => {
 
                         <div className="flex justify-start gap-6 items-center">
                             <a 
-                                href="https://github.com/RMahshie/LawSearch-AI" 
+                                href="https://github.com/RMahshie/LawSearch" 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-purple-400 hover:text-purple-300 transition-colors my-5"
