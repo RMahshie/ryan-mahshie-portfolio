@@ -78,7 +78,8 @@ export const Projects = () => {
                         <p className="text-gray-400 mb-4">
                             An AI-powered question-answering system that uses 
                             a dynamic RAG pipeline to retrieve and summarize key information 
-                            from U.S. legislative documents.
+                            from U.S. legislative documents. Powered by ChatGPT and LangChain
+                            and deployed by Docker.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             {["Python", "LangChain", "LangGraph", "ChromaDB", "requests", "ChatGPT API", "Congressional API"].map((tech, key) => (
@@ -94,7 +95,7 @@ export const Projects = () => {
 
                         <div className="flex justify-start gap-6 items-center">
                             <a 
-                                href="https://github.com/RMahshie/LawSearch" 
+                                href="https://github.com/RMahshie/lawsearchprod" 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-purple-400 hover:text-purple-300 transition-colors my-5"
