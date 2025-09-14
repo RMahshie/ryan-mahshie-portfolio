@@ -15,7 +15,7 @@ export const Home = () => {
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
                 Welcome! This website introduces my latest projects as a third year computer 
                 science major at Northeastern University. Current projects and interests 
-                include solving real world problems using machine learning and back-end development.
+                include solving real world problems using LLMs and back-end development.
                 </p>
                 <div className="flex justify-center space-x-4">
                     <a 
