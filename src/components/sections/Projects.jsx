@@ -111,14 +111,16 @@ export const Projects = () => {
 
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> ASL Image Classifier </h3>
+                        <h3 className="text-xl font-bold mb-2"> Sonara (In Development) </h3>
                         <p className="text-gray-400 mb-4">
-                        A deep learning model built with a convolutional neural network 
-                        architecture to classify American Sign Language hand signs from 
-                        image data.
+                        An acoustic analysis platform built with Go backend orchestrating containerized 
+                        Python audio processing to measure room frequency response through consumer USB 
+                        microphones. Features OpenAPI architecture with Huma framework, PostgreSQL, and 
+                        intelligent processing that combines FFT analysis with physics-based room mode predictions.
+                        
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            {["Python", "PyTorch", "Regression", "CNN Architecture", "Multi-Class Classification"].map((tech, key) => (
+                            {["Go", "Python", "Huma", "PostgreSQL", "Docker", "WebRTC", "AWS", "React"].map((tech, key) => (
                                 <span 
                                     key={key}
                                     className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
