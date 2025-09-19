@@ -131,15 +131,15 @@ export const Projects = () => {
                             ))}
                         </div>
 
-                        <div className="flex justify-between items-center">
+                        {/* <div className="flex justify-between items-center">
                             <a 
-                                href="https://github.com/RMahshie/ASLClassifier"
+                                href=""
                                 target="_blank"
                                 rel="noopener noreferrer" 
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
-                                View Project →</a>
-                        </div>
+                                Soon →</a>
+                        </div> */}
                     </div>
                     
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
@@ -231,7 +231,7 @@ export const Projects = () => {
                             */}
                     </div>
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                    {/* <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
                         <h3 className="text-xl font-bold mb-2"> What's Next... </h3>
                         <p className="text-gray-400 mb-4">
@@ -248,7 +248,7 @@ export const Projects = () => {
                                     {tech} 
                                 </span>
                             ))}
-                        </div>
+                        </div> */}
                         {/*
                         <div className="flex justify-between items-center">
                             <a 
