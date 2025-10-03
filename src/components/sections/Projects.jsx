@@ -111,7 +111,7 @@ export const Projects = () => {
 
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> Sonara (In Development) </h3>
+                        <h3 className="text-xl font-bold mb-2"> Sonara </h3>
                         <p className="text-gray-400 mb-4">
                         An acoustic analysis platform built with Go backend orchestrating containerized 
                         Python audio processing to measure room frequency response through consumer USB 
@@ -131,15 +131,15 @@ export const Projects = () => {
                             ))}
                         </div>
 
-                        {/* <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-center">
                             <a 
-                                href=""
+                                href="https://sonara.up.railway.app/"
                                 target="_blank"
                                 rel="noopener noreferrer" 
                                 className="text-purple-400 hover:text-purple 300 transition-colors my-5"
                             > 
-                                Soon →</a>
-                        </div> */}
+                                Try It Out →</a>
+                        </div>
                     </div>
                     
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
