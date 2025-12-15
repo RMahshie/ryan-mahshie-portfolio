@@ -63,3 +63,59 @@ html, body {
   animation: fade-in 0.2s ease forwards;
 }
 
+/* Interactive Button Styles */
+.btn-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-interactive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.btn-interactive:hover::before {
+  width: 100%;
+}
+
+.btn-interactive .arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-interactive:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-interactive:hover {
+  color: #a78bfa;
+}
+
+/* Navigation Indicator Animation */
+.nav-indicator {
+  animation: nav-indicator-appear 0.3s ease forwards;
+}
+
+@keyframes nav-indicator-appear {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+

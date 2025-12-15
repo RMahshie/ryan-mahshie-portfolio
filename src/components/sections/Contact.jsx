@@ -37,27 +37,29 @@ export const Contact = () => {
   };
 
   return (
-    <RevealOnScroll>
       <section
         id="contact"
         className="min-h-screen flex items-center justify-center py-20"
       >
         <div className="px-4 w-full max-w-lg">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center">
-            Get In Touch
-          </h2>
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            <input
-                type="hidden"
-                name="to_name"
-                value="Ryan" 
-            />
-            <input
-              type="text"
+          <RevealOnScroll delay={0}>
+            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center">
+              Get In Touch
+            </h2>
+          </RevealOnScroll>
+          <RevealOnScroll delay={150}>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <input
+                  type="hidden"
+                  name="to_name"
+                  value="Ryan" 
+              />
+              <input
+                type="text"
               name="from_name"
               required
               value={formData.name}
@@ -99,9 +101,9 @@ export const Contact = () => {
             >
               {sending ? "Sending…" : "Send Message"}
             </button>
-          </form>
+            </form>
+          </RevealOnScroll>
         </div>
       </section>
-    </RevealOnScroll>
   );
 };

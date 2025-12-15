@@ -8,16 +8,19 @@ export const About = () => {
     const devtoolSkills = ["Github + Gitlab", "VS Code", "CI/CD", "Docker", "Harbor", "Kubernetes"]
 
     return (
-        <RevealOnScroll>
         <section 
             id="about" 
             className="min-h-screen flex items-center justify-center py-20">
           
             <div className="max-w-4xl mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center"> 
-                    About Me
-                </h2>
-                <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
+                <RevealOnScroll delay={0}>
+                    <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center"> 
+                        About Me
+                    </h2>
+                </RevealOnScroll>
+
+                <RevealOnScroll delay={100}>
+                    <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
                     <p className="text-gray-300 mb-6">
                     I’m Ryan Mahshie, a computer science student at Northeastern University concentrating in AI. 
                     I’m passionate about backend development, focusing on building systems that keep services 
@@ -86,57 +89,62 @@ export const About = () => {
                         </div>
                     </div>
                 </div>
+                </RevealOnScroll>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                        <h3 className="text-xl font-bold mb-4">
-                        🏫 Education
-                        </h3>
-                        <div className="space-y-4 text-gray-300">
-                            <div>
-                                <h4 className="font-semibold">B.S in Computer Science + AI Concentration - Northeastern University</h4>
-                                <p className="text-sm text-gray-400 mb-1">(2023 - 2027)</p>
-                                <p className="ml-4">• Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence</p>
+                    <RevealOnScroll delay={200}>
+                        <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all h-full">
+                            <h3 className="text-xl font-bold mb-4">
+                            🏫 Education
+                            </h3>
+                            <div className="space-y-4 text-gray-300">
+                                <div>
+                                    <h4 className="font-semibold">B.S in Computer Science + AI Concentration - Northeastern University</h4>
+                                    <p className="text-sm text-gray-400 mb-1">(2023 - 2027)</p>
+                                    <p className="ml-4">• Relevant Coursework: Object Oriented Design, Data Structures and Algorithms, Artificial Intelligence</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                        <h3 className="text-xl font-bold mb-4">
-                        💼 Experience
-                        </h3>
-                        <div className="space-y-4 text-gray-300">
-                            <div>
-                                <h4 className="font-semibold"> Software Engineering Co-op at <a href="https://www.linkedin.com/company/opscanvas/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">OpsCanvas</a></h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jul. 2025 - Dec. 2025)</p>
-                                <p className="ml-4">• Co-op working on AWS and Azure cloud monitoring software. Primarily working with Go, Python, Microsoft Bicep.</p>
-                            </div>
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={300}>
+                        <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all h-full">
+                            <h3 className="text-xl font-bold mb-4">
+                            💼 Experience
+                            </h3>
+                            <div className="space-y-4 text-gray-300">
+                                <div>
+                                    <h4 className="font-semibold"> Software Engineering Co-op at <a href="https://www.linkedin.com/company/opscanvas/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">OpsCanvas</a></h4>
+                                    <p className="text-sm text-gray-400 mb-1">(Jul. 2025 - Dec. 2025)</p>
+                                    <p className="ml-4">• Co-op working on AWS and Azure cloud monitoring software. Primarily working with Go, Python, Microsoft Bicep.</p>
+                                </div>
 
-                            <div>
-                                <h4 className="font-semibold"> AI Software Engineering Intern at <a href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">Pelagic AI</a></h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
-                                <p className="ml-4">• Engineered an AI-driven satellite simulation with autonomous agents, GraphX-based airport modeling, and Model Context Protocol integration for geospatial reasoning.</p>
-                            </div>
-                            
-                            <div>
-                                <h4 className="font-semibold"> Software Engineering Intern at OPEXUS</h4>
-                                <p className="text-sm text-gray-400 mb-1">(Jun. 2024 - Sep. 2024)</p>
-                                <p className="ml-4">• Developed SQL mapping scripts and supported large-scale data migrations 
-                                    for legacy system transitions in public sector software.</p>
-                            </div>
+                                <div>
+                                    <h4 className="font-semibold"> AI Software Engineering Intern at <a href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">Pelagic AI</a></h4>
+                                    <p className="text-sm text-gray-400 mb-1">(Jun. 2025 - Jul. 2025)</p>
+                                    <p className="ml-4">• Engineered an AI-driven satellite simulation with autonomous agents, GraphX-based airport modeling, and Model Context Protocol integration for geospatial reasoning.</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold"> Software Engineering Intern at OPEXUS</h4>
+                                    <p className="text-sm text-gray-400 mb-1">(Jun. 2024 - Sep. 2024)</p>
+                                    <p className="ml-4">• Developed SQL mapping scripts and supported large-scale data migrations 
+                                        for legacy system transitions in public sector software.</p>
+                                </div>
 
-                            <div>
-                                <h4 className="font-semibold"> Information Technology Volunteer at <a href="https://www.ceoforthepeople.org/home" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">CEO</a></h4>
-                                <p className="text-sm text-gray-400 mb-1">(Dec. 2023 - Jun. 2024)</p>
-                                <p className="ml-4">•
-                                Migrated web content from a legacy CMS to Google Sites and integrated donation 
-                                and planning tools, improving accessibility and helping raise over $5,000 in online contributions.
-                                </p>
+                                <div>
+                                    <h4 className="font-semibold"> Information Technology Volunteer at <a href="https://www.ceoforthepeople.org/home" target="_blank" rel="noopener noreferrer" className="text-inherit hover:text-purple-500 no-underline cursor-pointer transition-colors">CEO</a></h4>
+                                    <p className="text-sm text-gray-400 mb-1">(Dec. 2023 - Jun. 2024)</p>
+                                    <p className="ml-4">•
+                                    Migrated web content from a legacy CMS to Google Sites and integrated donation 
+                                    and planning tools, improving accessibility and helping raise over $5,000 in online contributions.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>                      
+                    </RevealOnScroll>
                 </div>
             </div>
           
         </section>
-        </RevealOnScroll>);
+    );
 };

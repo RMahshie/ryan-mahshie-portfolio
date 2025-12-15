@@ -27,7 +27,6 @@ export const Projects = () => {
     const embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
     
     return (
-        <RevealOnScroll>
         <section 
             id="projects" 
             className="min-h-screen flex items-center py-20"
@@ -66,170 +65,188 @@ export const Projects = () => {
             )}
           
             <div className="max-w-5xl mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center"> 
-                    {" "}
-                    Featured Projects
-                </h2>
+                <RevealOnScroll delay={0}>
+                    <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center"> 
+                        {" "}
+                        Featured Projects
+                    </h2>
+                </RevealOnScroll>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> LawSearch AI </h3>
-                        <p className="text-gray-400 mb-4">
-                            An AI-powered question-answering system that uses 
-                            a dynamic RAG pipeline to retrieve and summarize key information 
-                            from U.S. legislative documents. Powered by ChatGPT and LangChain
-                            and deployed by Docker.
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["Python", "LangChain", "LangGraph", "ChromaDB", "requests", "ChatGPT API", "Congressional API"].map((tech, key) => (
-                                <span 
-                                    key={key}
-                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
-                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
-                                >
-                                    {tech} 
-                                </span>
-                            ))}
-                        </div>
+                    <RevealOnScroll delay={100}>
+                        <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                        hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
+                            <h3 className="text-xl font-bold mb-2"> LawSearch AI </h3>
+                            <p className="text-gray-400 mb-4">
+                                An AI-powered question-answering system that uses 
+                                a dynamic RAG pipeline to retrieve and summarize key information 
+                                from U.S. legislative documents. Powered by ChatGPT and LangChain
+                                and deployed by Docker.
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {["Python", "LangChain", "LangGraph", "ChromaDB", "requests", "ChatGPT API", "Congressional API"].map((tech, key) => (
+                                    <span 
+                                        key={key}
+                                        className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                    >
+                                        {tech} 
+                                    </span>
+                                ))}
+                            </div>
 
-                        <div className="flex justify-start gap-6 items-center">
-                            <a 
-                                href="https://github.com/RMahshie/lawsearchprod" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-purple-400 hover:text-purple-300 transition-colors my-5"
-                            > 
-                                View Project →</a>
-                            <button 
-                                onClick={() => setShowVideoModal(true)}
-                                className="text-purple-400 hover:text-purple-300 transition-colors my-5 cursor-pointer"
-                            > 
-                                Watch Demo →</button>
+                            <div className="flex justify-start gap-4 items-center mt-auto pt-2">
+                                <a 
+                                    href="https://github.com/RMahshie/lawsearchprod" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-interactive text-purple-400"
+                                > 
+                                    View Project <span className="arrow">→</span>
+                                </a>
+                                <button 
+                                    onClick={() => setShowVideoModal(true)}
+                                    className="btn-interactive text-purple-400 cursor-pointer"
+                                > 
+                                    Watch Demo <span className="arrow">→</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </RevealOnScroll>
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> Sonara </h3>
-                        <p className="text-gray-400 mb-4">
-                        An acoustic analysis platform built with Go backend orchestrating containerized 
-                        Python audio processing to measure room frequency response through consumer USB 
-                        microphones. Features OpenAPI architecture with Huma framework, PostgreSQL, and 
-                        intelligent processing that combines FFT analysis with physics-based room mode predictions.
+                    <RevealOnScroll delay={200}>
+                        <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                        hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
+                            <h3 className="text-xl font-bold mb-2"> Sonara </h3>
+                            <p className="text-gray-400 mb-4">
+                            An acoustic analysis platform built with Go backend orchestrating containerized 
+                            Python audio processing to measure room frequency response through consumer USB 
+                            microphones. Features OpenAPI architecture with Huma framework, PostgreSQL, and 
+                            intelligent processing that combines FFT analysis with physics-based room mode predictions.
                         
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["Go", "Python", "Huma", "PostgreSQL", "Docker", "WebRTC", "AWS", "React"].map((tech, key) => (
-                                <span 
-                                    key={key}
-                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
-                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
-                                >
-                                    {tech} 
-                                </span>
-                            ))}
-                        </div>
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {["Go", "Python", "Huma", "PostgreSQL", "Docker", "WebRTC", "AWS", "React"].map((tech, key) => (
+                                    <span 
+                                        key={key}
+                                        className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                    >
+                                        {tech} 
+                                    </span>
+                                ))}
+                            </div>
 
-                        <div className="flex justify-between items-center">
-                            <a 
-                                href="https://sonara.up.railway.app/"
-                                target="_blank"
-                                rel="noopener noreferrer" 
-                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
-                            > 
-                                Try It Out →</a>
+                            <div className="flex justify-between items-center mt-auto pt-2">
+                                <a 
+                                    href="https://sonara.up.railway.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer" 
+                                    className="btn-interactive text-purple-400"
+                                > 
+                                    Try It Out <span className="arrow">→</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </RevealOnScroll>
                     
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> MCP Calculator Demo </h3>
-                        <p className="text-gray-400 mb-4">
-                            This is a demonstration project that showcases how to integrate external 
-                            calculator tools with Large Language Models using the Model Context Protocol 
-                            (MCP), enabling AI to perform mathematical calculations through secure tool calls.                       
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["Model Context Protocol (MCP)", "LangChain", "LangGraph", "OpenAI API", "FastMCP", "Python"].map((tech, key) => (
-                                <span 
-                                    key={key}
-                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
-                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
-                                >
-                                    {tech} 
-                                </span>
-                            ))}
-                        </div>
-                        
-                        <div className="flex justify-between items-center">
-                            <a 
-                                href="https://github.com/RMahshie/mcp-projects/tree/main/calculator" 
-                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
-                            > 
-                                View Project →</a>
-                        </div>
+                    <RevealOnScroll delay={300}>
+                        <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                        hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
+                            <h3 className="text-xl font-bold mb-2"> MCP Calculator Demo </h3>
+                            <p className="text-gray-400 mb-4">
+                                This is a demonstration project that showcases how to integrate external 
+                                calculator tools with Large Language Models using the Model Context Protocol 
+                                (MCP), enabling AI to perform mathematical calculations through secure tool calls.                       
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {["Model Context Protocol (MCP)", "LangChain", "LangGraph", "OpenAI API", "FastMCP", "Python"].map((tech, key) => (
+                                    <span 
+                                        key={key}
+                                        className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                    >
+                                        {tech} 
+                                    </span>
+                                ))}
+                            </div>
                             
-                    </div>
+                            <div className="flex justify-between items-center mt-auto pt-2">
+                                <a 
+                                    href="https://github.com/RMahshie/mcp-projects/tree/main/calculator"
+                                    target="_blank"
+                                    rel="noopener noreferrer" 
+                                    className="btn-interactive text-purple-400"
+                                > 
+                                    View Project <span className="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </RevealOnScroll>
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> MacOS ZSH Shell </h3>
-                        <p className="text-gray-400 mb-4">
-                            A custom Unix shell built in C, featuring a deterministic finite 
-                            automaton tokenizer, along with support for command parsing, piping, 
-                            file redirection, and built-in shell commands.                        
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["C", "Unix", "Git", "GCC/Make", "Bash/ZSH", "Valgrind"].map((tech, key) => (
-                                <span 
-                                    key={key}
-                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
-                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
-                                >
-                                    {tech} 
-                                </span>
-                            ))}
-                        </div>
+                    <RevealOnScroll delay={400}>
+                        <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                        hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
+                            <h3 className="text-xl font-bold mb-2"> MacOS ZSH Shell </h3>
+                            <p className="text-gray-400 mb-4">
+                                A custom Unix shell built in C, featuring a deterministic finite 
+                                automaton tokenizer, along with support for command parsing, piping, 
+                                file redirection, and built-in shell commands.                        
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {["C", "Unix", "Git", "GCC/Make", "Bash/ZSH", "Valgrind"].map((tech, key) => (
+                                    <span 
+                                        key={key}
+                                        className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                    >
+                                        {tech} 
+                                    </span>
+                                ))}
+                            </div>
 
-                        <div className="flex justify-between items-center">
-                            <a 
-                                href="https://github.com/RMahshie/MacOS-ZSH-Shell"
-                                target="_blank"
-                                rel="noopener noreferrer" 
-                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
-                            > 
-                                View Project →</a>
+                            <div className="flex justify-between items-center mt-auto pt-2">
+                                <a 
+                                    href="https://github.com/RMahshie/MacOS-ZSH-Shell"
+                                    target="_blank"
+                                    rel="noopener noreferrer" 
+                                    className="btn-interactive text-purple-400"
+                                > 
+                                    View Project <span className="arrow">→</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </RevealOnScroll>
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                        <h3 className="text-xl font-bold mb-2"> This Website </h3>
-                        <p className="text-gray-400 mb-4">
-                            I made this website to be a portfolio of my work and way to explore Frontend programming.                       
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["JavaScript", "React", "Tailwind CSS", "Vite", "GitHub Pages", "Static Hosting", "Custom Domain"].map((tech, key) => (
-                                <span 
-                                    key={key}
-                                    className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
-                                                hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
-                                >
-                                    {tech} 
-                                </span>
-                            ))}
+                    <RevealOnScroll delay={500}>
+                        <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
+                                        hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
+                            <h3 className="text-xl font-bold mb-2"> This Website </h3>
+                            <p className="text-gray-400 mb-4">
+                                I made this website to be a portfolio of my work and way to explore Frontend programming.                       
+                            </p>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {["JavaScript", "React", "Tailwind CSS", "Vite", "GitHub Pages", "Static Hosting", "Custom Domain"].map((tech, key) => (
+                                    <span 
+                                        key={key}
+                                        className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all"
+                                    >
+                                        {tech} 
+                                    </span>
+                                ))}
+                            </div>
+                            {/*
+                            <div className="flex justify-between items-center">
+                                <a 
+                                    href="#" 
+                                    className="text-purple-400 hover:text-purple 300 transition-colors my-5"
+                                > 
+                                    View Project →</a>
+                            </div>
+                                */}
                         </div>
-                        {/*
-                        <div className="flex justify-between items-center">
-                            <a 
-                                href="#" 
-                                className="text-purple-400 hover:text-purple 300 transition-colors my-5"
-                            > 
-                                View Project →</a>
-                        </div>
-                            */}
-                    </div>
+                    </RevealOnScroll>
 
                     {/* <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
@@ -267,6 +284,5 @@ export const Projects = () => {
             </div>
           
         </section>
-        </RevealOnScroll>
     );
 };
