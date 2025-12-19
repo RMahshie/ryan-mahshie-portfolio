@@ -153,14 +153,14 @@ export const Projects = () => {
                     <RevealOnScroll delay={300}>
                         <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-purple-500/30 
                                         hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all h-full">
-                            <h3 className="text-xl font-bold mb-2"> MCP Calculator Demo </h3>
+                            <h3 className="text-xl font-bold mb-2"> Nitpick </h3>
                             <p className="text-gray-400 mb-4">
-                                This is a demonstration project that showcases how to integrate external 
-                                calculator tools with Large Language Models using the Model Context Protocol 
-                                (MCP), enabling AI to perform mathematical calculations through secure tool calls.                       
+                            A GitHub Action that provides AI-powered code reviews on pull requests, automatically 
+                            routing between lightweight reviews for simple changes and agentic reviews for complex 
+                            cross-file modifications that trace code flow and dependencies.                       
                             </p>
                             <div className="flex flex-wrap gap-2 mb-4">
-                                {["Model Context Protocol (MCP)", "LangChain", "LangGraph", "OpenAI API", "FastMCP", "Python"].map((tech, key) => (
+                                {["Claude Agent SDK", "LangChain", "OpenAI API", "GitHub Actions", "Pydantic", "Python"].map((tech, key) => (
                                     <span 
                                         key={key}
                                         className="bg-purple-500/10 text-purple-500 py-1 px-3 rounded-full text-sm hover:bg-purple-500/20
@@ -173,12 +173,12 @@ export const Projects = () => {
                             
                             <div className="flex justify-between items-center mt-auto pt-2">
                                 <a 
-                                    href="https://github.com/RMahshie/mcp-projects/tree/main/calculator"
+                                    href="https://github.com/RMahshie/codereviewer"
                                     target="_blank"
                                     rel="noopener noreferrer" 
                                     className="btn-interactive text-purple-400"
                                 > 
-                                    View Project <span className="arrow">→</span>
+                                    Try It Out <span className="arrow">→</span>
                                 </a>
                             </div>
                         </div>
