@@ -1,32 +1,23 @@
 export const Footer = () => {
-    return (
-      <footer className="mt-12 py-4 text-center text-xs text-gray-400">
-        <div className="space-x-4 mb-2">
-          <a
-            href="mailto:ryan@mahshie.net"
-            className="hover:underline"
-          >
-            Email
-          </a>
-          <a
-            href="https://github.com/RMahshie"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com/in/ryan-mahshie"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            LinkedIn
-          </a>
-        </div>
-        <div>© {new Date().getFullYear()} Ryan Mahshie. All rights reserved.</div>
-      </footer>
-    );
-  };
-  
+  return (
+    <footer
+      style={{
+        background: 'var(--surface-dark)',
+        borderTop: '1px solid var(--surface-border)',
+        padding: '1.5rem var(--gutter)',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 'var(--max-width-content)',
+          margin: '0 auto',
+          textAlign: 'center',
+        }}
+      >
+        <span style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)' }}>
+          © {new Date().getFullYear()} Ryan Mahshie
+        </span>
+      </div>
+    </footer>
+  );
+};

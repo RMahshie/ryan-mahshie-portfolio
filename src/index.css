@@ -1,69 +1,198 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM — CSS Custom Properties
+   ============================================================ */
+:root {
+  /* Surface hierarchy */
+  --surface-base:    #0a0a0c;
+  --surface-raised:  #111114;
+  --surface-overlay: #1a1a1f;
+  --surface-subtle:  #21212a;
+  --surface-border:  #2a2a35;
+
+  /* Accent */
+  --accent:            #a855f7;
+  --accent-hover:      #c084fc;
+  --accent-muted:      #7c3aed;
+  --accent-glow:       rgba(168, 85, 247, 0.15);
+  --accent-glow-strong: rgba(168, 85, 247, 0.25);
+
+  /* Text */
+  --text-primary:   #f0f0f3;
+  --text-secondary: #a0a0b0;
+  --text-tertiary:  #6b6b7b;
+
+  /* Spacing */
+  --space-section: clamp(6rem, 10vw, 10rem);
+  --space-block:   clamp(3rem, 5vw, 5rem);
+  --space-element: 1.5rem;
+  --space-tight:   0.75rem;
+
+  /* Content width */
+  --max-width-content: 1100px;
+  --max-width-narrow:  720px;
+  --gutter: clamp(1.5rem, 4vw, 3rem);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Dark floor (CTA, footer) */
+  --surface-dark: #050507;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
 html, body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  background: #0a0a0a;
-  color: #f3f4f6;
+  background: var(--surface-base);
+  color: var(--text-primary);
 }
 
+/* ============================================================
+   CARD PATTERNS
+   ============================================================ */
+.card {
+  background: var(--surface-raised);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
 
+.card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.08);
+}
+
+.card-featured {
+  background: var(--surface-raised);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card-featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.card-featured:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.12);
+}
+
+/* ============================================================
+   LOADING SCREEN ANIMATIONS
+   ============================================================ */
 @layer utilities {
-  
   @keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
   }
-
   .animate-blink {
     animation: blink 0.8s step-end infinite;
   }
-  
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(250%);
-    }
-  }
 
+  @keyframes loading {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(250%); }
+  }
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
   }
 }
 
-
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.7s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0)
+  transform: translateY(0);
 }
 
+/* ============================================================
+   FADE IN
+   ============================================================ */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .animate-fade-in {
   animation: fade-in 0.2s ease forwards;
 }
 
-/* Interactive Button Styles */
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+
+/* Primary filled button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+}
+
+/* Ghost/outline button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Legacy interactive button */
 .btn-interactive {
   display: inline-flex;
   align-items: center;
@@ -71,7 +200,7 @@ html, body {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
 }
@@ -83,8 +212,8 @@ html, body {
   bottom: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(to right, #8b5cf6, #3b82f6);
-  transition: width 0.3s ease;
+  background: var(--accent);
+  transition: width var(--transition-base);
 }
 
 .btn-interactive:hover::before {
@@ -92,7 +221,7 @@ html, body {
 }
 
 .btn-interactive .arrow {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .btn-interactive:hover .arrow {
@@ -100,22 +229,60 @@ html, body {
 }
 
 .btn-interactive:hover {
-  color: #a78bfa;
+  color: var(--accent-hover);
 }
 
-/* Navigation Indicator Animation */
+/* ============================================================
+   TECH PILL / BADGE
+   ============================================================ */
+.tech-pill {
+  display: inline-block;
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tech-pill:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* ============================================================
+   NAV INDICATOR
+   ============================================================ */
 .nav-indicator {
   animation: nav-indicator-appear 0.3s ease forwards;
 }
 
 @keyframes nav-indicator-appear {
-  from {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-  }
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
 }
 
+/* ============================================================
+   SCROLL CHEVRON (hero scroll indicator)
+   ============================================================ */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

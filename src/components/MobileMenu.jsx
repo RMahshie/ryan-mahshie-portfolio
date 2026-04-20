@@ -1,87 +1,72 @@
-import { useEffect } from "react";
-
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
+  const links = [
+    { id: 'about',      label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects',   label: 'Projects' },
+    { id: 'contact',    label: 'Contact' },
+  ];
 
-    // Handle click outside to close menu
-    const handleBackdropClick = (e) => {
-        // Check if the click target is the backdrop (not the menu items)
-        if (e.target === e.currentTarget) {
-            setMenuOpen(false);
-        }
-    };
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: menuOpen ? '100vh' : 0,
+        background: 'rgba(10, 10, 12, 0.97)',
+        backdropFilter: 'blur(16px)',
+        zIndex: 40,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: menuOpen ? 1 : 0,
+        pointerEvents: menuOpen ? 'auto' : 'none',
+        transition: 'opacity 0.3s ease, height 0.3s ease',
+        overflow: 'hidden',
+      }}
+      onClick={(e) => { if (e.target === e.currentTarget) setMenuOpen(false); }}
+    >
+      <button
+        onClick={() => setMenuOpen(false)}
+        style={{
+          position: 'absolute',
+          top: '1.5rem',
+          right: '1.5rem',
+          background: 'none',
+          border: 'none',
+          color: 'var(--text-primary)',
+          fontSize: '2rem',
+          cursor: 'pointer',
+          lineHeight: 1,
+        }}
+        aria-label="Close menu"
+      >
+        &times;
+      </button>
 
-    return (
-        <div 
-            className={`fixed top-0 left-0 w-full bg-[rgba(10, 10, 10, 0.8)] z-40 flex flex-col items-center justify-center
-                         transition-all duration-300 ease-in-out
-
-                         ${
-                            menuOpen ? "h-screen opacity-100 pointer-events-auto" 
-                            : "h-0 opacity-0 pointer-events-none"
-                         }
-                       `}
-            onClick={handleBackdropClick}
+      {links.map((link, i) => (
+        <a
+          key={link.id}
+          href={`#${link.id}`}
+          onClick={() => setMenuOpen(false)}
+          style={{
+            fontSize: '1.75rem',
+            fontWeight: 600,
+            color: 'var(--text-primary)',
+            textDecoration: 'none',
+            margin: '0.875rem 0',
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
+            transition: `opacity 0.3s ease ${i * 50}ms, transform 0.3s ease ${i * 50}ms`,
+          }}
+          onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+          onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
         >
-            <button 
-                onClick={() => setMenuOpen(false)} 
-                className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer"
-                aria-label="Close Menu"
-            >
-                &times;
-            </button>
-
-            <a 
-                href="#home"
-                onClick={() => setMenuOpen(false)} 
-                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                            ${
-                                menuOpen 
-                                    ? "opacity-100 translate-y-0" 
-                                    : "opacity-0 translate-y-5"
-                            }
-                `}
-            >             
-                Home
-            </a>
-            <a 
-                href="#about" 
-                onClick={() => setMenuOpen(false)} 
-                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                            ${
-                                menuOpen 
-                                    ? "opacity-100 translate-y-0" 
-                                    : "opacity-0 translate-y-5"
-                            }
-                `}
-            > 
-                About
-            </a>
-            <a 
-                href="#experience" 
-                onClick={() => setMenuOpen(false)} 
-                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                            ${
-                                menuOpen 
-                                    ? "opacity-100 translate-y-0" 
-                                    : "opacity-0 translate-y-5"
-                            }
-                `}
-            > 
-                Experience
-            </a>
-            <a 
-                href="#projects" 
-                onClick={() => setMenuOpen(false)} 
-                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                            ${
-                                menuOpen 
-                                    ? "opacity-100 translate-y-0" 
-                                    : "opacity-0 translate-y-5"
-                            }
-                `}
-            > 
-                Projects
-            </a>
-        </div>
-    );
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
 };
