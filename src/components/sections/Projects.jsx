@@ -138,7 +138,7 @@ export const Projects = () => {
             </button>
             <div style={{ aspectRatio: '16/9' }}>
               <video
-                src="/LawSearchAI-Demo.mov"
+                src="/lawsearch-demo.mkv"
                 style={{ width: '100%', height: '100%', display: 'block' }}
                 controls
                 autoPlay
