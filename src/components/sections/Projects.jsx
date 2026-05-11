@@ -29,6 +29,17 @@ const projects = [
     hasDemo: false,
     featured: false,
   },
+  {
+    name: 'Tokenburn',
+    description: 'A Rust terminal dashboard for tracking Claude Code and Codex usage from local session files, with time-range views, token breakdowns, cache stats, and retention checks.',
+    tech: ['Rust', 'Ratatui', 'Homebrew', 'Claude Code', 'Codex'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/RMahshie/tokenburn' },
+      { label: 'Install', url: 'https://github.com/RMahshie/homebrew-tap' },
+    ],
+    hasDemo: false,
+    featured: false,
+  },
 ];
 
 const TechPills = ({ tech }) => (
@@ -138,7 +149,7 @@ export const Projects = () => {
             </button>
             <div style={{ aspectRatio: '16/9' }}>
               <video
-                src="/lawsearch-demo.mkv"
+                src="/lawsearch-demo.mp4"
                 style={{ width: '100%', height: '100%', display: 'block' }}
                 controls
                 autoPlay
@@ -197,7 +208,7 @@ export const Projects = () => {
               className="card-featured"
               style={{
                 gridColumn: '1',
-                gridRow: '1 / 3',
+                gridRow: '1 / 4',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -279,6 +290,25 @@ export const Projects = () => {
                 {rest[1].description}
               </p>
               <TechPills tech={rest[1].tech} />
+            </div>
+          </RevealOnScroll>
+
+          {/* Tokenburn */}
+          <RevealOnScroll delay={300}>
+            <div
+              className="card"
+              style={{ gridColumn: '2', gridRow: '3', display: 'flex', flexDirection: 'column' }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
+                  {rest[2].name}
+                </h3>
+                <ProjectLinks links={rest[2].links} hasDemo={false} />
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                {rest[2].description}
+              </p>
+              <TechPills tech={rest[2].tech} />
             </div>
           </RevealOnScroll>
         </div>
