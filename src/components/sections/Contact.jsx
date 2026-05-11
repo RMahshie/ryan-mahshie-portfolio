@@ -89,7 +89,7 @@ export const Contact = () => {
               marginBottom: '2.5rem',
             }}
           >
-            I'm currently recruiting for Fall 2026 internships and always open to talking about backend engineering, AI systems, or new opportunities.
+            I’m recruiting for Fall 2026 internships and always open to talking about backend engineering, AI systems, or interesting product ideas.
           </p>
         </RevealOnScroll>
 

@@ -4,15 +4,15 @@ import { useState, useEffect } from 'react';
 const projects = [
   {
     name: 'LawSearch AI',
-    description: 'A RAG app built for a lobbyist client to search federal appropriations bills. It parses 2,000+ page funding bills into custom per-division vector stores, then routes questions through a LangGraph pipeline that classifies the query, rewrites division-specific searches, retrieves relevant chunks, map-reduces the findings, and synthesizes a cited answer. For funding totals, users can click into the answer to see which source chunks each number came from and how added-up figures were calculated. I manually tuned retrieval and cut response time from 3.5 minutes to 45 seconds, reducing my client’s overall research time by 90%.',
-    tech: ['Python', 'LangChain', 'LangGraph', 'ChromaDB', 'ChatGPT API', 'Congressional API'],
+    description: 'A RAG app built for a lobbyist client to search federal appropriations bills. It parses 2,000+ page funding bills into custom per-division vector stores, then runs questions through a LangGraph classify → rewrite → retrieve → map-reduce → answer pipeline. The app returns cited answers with clickable funding details, showing where each number came from and how added-up figures were calculated. I built a gold-standard eval suite for answer accuracy and citation quality, then used it to tune retrieval from 3.5 minutes to 45 seconds and reduce my client’s research time by 90%.',
+    tech: ['Python', 'LangChain', 'LangGraph', 'ChromaDB', 'OpenAI API'],
     links: [{ label: 'GitHub', url: 'https://github.com/RMahshie/lawsearchprod' }],
     hasDemo: true,
     featured: true,
   },
   {
     name: 'Sonara',
-    description: 'A room acoustics analyzer for improving speaker setups and sound treatment. Play a sine sweep, record with a USB mic, and get your room\'s frequency response with calculated room modes. Built with Go and goroutines for audio processing, deployed on Railway with Docker.',
+    description: 'A room acoustics analyzer for improving speaker setup with a cheap USB microphone. Users record a sine sweep and get frequency response, room modes, and setup guidance. I built the Go backend, used Python for FFT analysis, and got results within about ±3 dB of professional measurement tools.',
     tech: ['Go', 'Python', 'Huma', 'PostgreSQL', 'Docker', 'WebRTC', 'React'],
     links: [
       { label: 'GitHub', url: 'https://github.com/RMahshie/sonara' },
@@ -23,7 +23,7 @@ const projects = [
   },
   {
     name: 'Nitpick',
-    description: 'A GitHub Action that provides agentic code reviews on pull requests, automatically routing between lightweight reviews for simple changes and agentic reviews for complex cross-file modifications that trace code flow and dependencies.',
+    description: 'A GitHub Action for AI pull request reviews. It routes simple diffs to lightweight checks and sends complex cross-file changes through deeper reviews that trace code flow, dependencies, and likely failure points.',
     tech: ['Claude Agent SDK', 'LangChain', 'OpenAI API', 'GitHub Actions', 'Python'],
     links: [{ label: 'GitHub', url: 'https://github.com/RMahshie/codereviewer' }],
     hasDemo: false,

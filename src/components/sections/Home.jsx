@@ -49,7 +49,7 @@ export const Home = () => {
             marginBottom: '1.5rem',
           }}
         >
-          Backend Engineer &nbsp;•&nbsp; AI Systems &nbsp;•&nbsp; Cloud Infrastructure
+          Backend Systems &nbsp;•&nbsp; AI Infrastructure &nbsp;•&nbsp; Cloud Platforms
         </p>
 
         {/* Main heading */}
@@ -77,7 +77,7 @@ export const Home = () => {
             margin: '0 auto 2.5rem',
           }}
         >
-          I build backend systems that work at scale, from cross-cloud infrastructure to agentic AI architectures.
+          I build backend systems for cloud infrastructure, AI workflows, and data-heavy products.
         </p>
 
         <p
