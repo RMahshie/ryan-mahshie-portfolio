@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 const projects = [
   {
     name: 'LawSearch AI',
-    description: 'An AI-powered tool built for a lobbyist client to search federal spending bills. Parses 2,000+ page bills into 14 specialized vector stores by committee, routes queries via LLM, and combines results through RAG map-reduce. Built pre-MCP, pre-evals; I tuned retrieval parameters through manual testing. Reduced response time from 3 minutes to 30 seconds and cut customer research time by 90%.',
+    description: 'A RAG app built for a lobbyist client to search federal appropriations bills. It parses 2,000+ page funding bills into custom per-division vector stores, then routes questions through a LangGraph pipeline that classifies the query, rewrites division-specific searches, retrieves relevant chunks, map-reduces the findings, and synthesizes a cited answer. For funding totals, users can click into the answer to see which source chunks each number came from and how added-up figures were calculated. I manually tuned retrieval and cut response time from 3.5 minutes to 45 seconds, reducing my client’s overall research time by 90%.',
     tech: ['Python', 'LangChain', 'LangGraph', 'ChromaDB', 'ChatGPT API', 'Congressional API'],
     links: [{ label: 'GitHub', url: 'https://github.com/RMahshie/lawsearchprod' }],
     hasDemo: true,

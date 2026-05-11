@@ -7,8 +7,8 @@ const experiences = [
     title: 'Backend Software Engineering Intern',
     dates: 'Summer 2026',
     incoming: true,
-    description: 'Joining the CyberSource Acceptance Solutions team in Bellevue, WA to work on payment infrastructure and AI agents.',
-    featured: false,
+    description: 'Joining the CyberSource Acceptance Solutions team in Bellevue, WA to work on payment infrastructure, backend systems, and applied AI tooling.',
+    featured: true,
   },
   {
     company: 'OpsCanvas',
@@ -16,8 +16,8 @@ const experiences = [
     title: 'Software Engineering Co-op',
     dates: 'Jul. 2025 – Dec. 2025',
     incoming: false,
-    description: `At OpsCanvas, I led the expansion of our ZombieScan cloud monitoring platform into Azure, doubling the company's addressable market. I wrote 3,000 lines of infrastructure-as-code using Bicep, extended our Go API to handle Azure installations, and built new Dockerized report generators for Azure Container Jobs. I implemented cross-cloud DataSync between Azure Blob storage and AWS S3, and E2E tested the full system across EKS, Azure, and Postgres.`,
-    featured: true,
+    description: `At OpsCanvas, I helped expand ZombieScan from an AWS-only product into one that supported both AWS and Azure. I wrote the Bicep infrastructure to deploy the full product into Azure, extended our Go API for Azure install workflows, and built the backend logic that configured AWS DataSync transfers from customer Azure Blob Storage into our AWS S3. I also handled the database registration/state for those installs and E2E tested the system across Azure, AWS, EKS, and Postgres.`,
+    featured: false,
   },
   {
     company: 'Pelagic AI',
@@ -25,7 +25,7 @@ const experiences = [
     title: 'AI Software Engineering Intern',
     dates: 'Jun. 2025 – Jul. 2025',
     incoming: false,
-    description: `At Pelagic AI, I co-led development of an agentic satellite airport simulator for a DOD contract. I managed the project by scoping work and creating tickets, while also owning the entire agentic AI system. I built an 8-node cyclic LangGraph architecture that assessed airport layouts, autonomously repositioned aircraft, and ran adversarial simulations. The system could model any of 3,000+ real-world airports, each with up to 8,000+ nodes.`,
+    description: `At Pelagic AI, I helped lead an agentic airport simulation demo for a DoD contract. I scoped work, created tickets, and built the core AI system: an 8-node cyclic LangGraph setup where agents analyzed airport layouts, planned aircraft movements, read and updated simulation state through MCP tools, and evaluated final scenarios across 3,000+ real-world airports with up to 8,000+ nodes each.`,
     featured: false,
   },
   {
@@ -34,7 +34,7 @@ const experiences = [
     title: 'Software Engineering Intern',
     dates: 'Jun. 2024 – Sep. 2024',
     incoming: false,
-    description: `At OPEXUS, I supported data migrations for their FOIA request management platform. When competing vendors shut down, I wrote SQL scripts to transfer their client data and requests into our system, and used Windows VMs to verify migrations against MSSQL Server. This was my first professional engineering experience.`,
+    description: `At OPEXUS, I worked on migrations for agencies moving off FOIAonline after it shut down. I wrote SQL scripts to move client data and FOIA requests into our platform, then verified the migrations with Windows VMs and MSSQL Server. This was my first professional engineering experience.`,
     featured: false,
   },
 ];
