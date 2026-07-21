@@ -6,8 +6,7 @@ const experiences = [
     companyUrl: 'https://www.cybersource.com/',
     title: 'Backend Software Engineering Intern',
     dates: 'Summer 2026',
-    incoming: true,
-    description: 'Joining the CyberSource Acceptance Solutions team in Bellevue, WA to work on payment infrastructure, backend systems, and applied AI tooling.',
+    description: 'Working on event-driven Java services and applied AI.',
     featured: true,
   },
   {
@@ -15,7 +14,6 @@ const experiences = [
     companyUrl: 'https://www.linkedin.com/company/opscanvas/',
     title: 'Software Engineering Co-op',
     dates: 'Jul. 2025 – Dec. 2025',
-    incoming: false,
     description: `At OpsCanvas, I helped expand ZombieScan from an AWS-only product into one that supported both AWS and Azure. I wrote the Bicep infrastructure to deploy the full product into Azure, extended our Go API for Azure install workflows, and built the backend logic that configured AWS DataSync transfers from customer Azure Blob Storage into our AWS S3. I also handled the database registration/state for those installs and E2E tested the system across Azure, AWS, EKS, and Postgres.`,
     featured: false,
   },
@@ -24,7 +22,6 @@ const experiences = [
     companyUrl: 'https://www.linkedin.com/company/pelagicai/',
     title: 'AI Software Engineering Intern',
     dates: 'Jun. 2025 – Jul. 2025',
-    incoming: false,
     description: `At Pelagic AI, I helped lead an agentic airport simulation demo for a DoD contract. I scoped work, created tickets, and built the core AI system: an 8-node cyclic LangGraph setup where agents analyzed airport layouts, planned aircraft movements, read and updated simulation state through MCP tools, and evaluated final scenarios across 3,000+ real-world airports with up to 8,000+ nodes each.`,
     featured: false,
   },
@@ -33,7 +30,6 @@ const experiences = [
     companyUrl: null,
     title: 'Software Engineering Intern',
     dates: 'Jun. 2024 – Sep. 2024',
-    incoming: false,
     description: `At OPEXUS, I worked on migrations for agencies moving off FOIAonline after it shut down. I wrote SQL scripts to move client data and FOIA requests into our platform, then verified the migrations with Windows VMs and MSSQL Server. This was my first professional engineering experience.`,
     featured: false,
   },
@@ -187,23 +183,6 @@ export const Experience = () => {
                       >
                         {exp.title}
                       </span>
-                      {exp.incoming && (
-                        <span
-                          style={{
-                            fontSize: '0.625rem',
-                            fontWeight: 700,
-                            letterSpacing: '0.08em',
-                            textTransform: 'uppercase',
-                            color: 'var(--accent)',
-                            background: 'rgba(166,111,179,0.09)',
-                            border: '1px solid rgba(166,111,179,0.2)',
-                            borderRadius: '9999px',
-                            padding: '0.125rem 0.5rem',
-                          }}
-                        >
-                          Incoming
-                        </span>
-                      )}
                     </div>
 
                     <p

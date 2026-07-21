@@ -134,11 +134,11 @@ export const About = () => {
           <RevealOnScroll delay={75}>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
               I'm a computer science student at Northeastern University with an AI concentration and a 3.91 GPA.
-              Over the past year, I've worked as a backend engineer across govtech, defense AI, and cloud infrastructure,
-              owning features and shipping production code.
+              Over the past year, I've worked as a backend engineer across fintech, cloud infrastructure, govtech, and
+              defensive AI, owning features and shipping production code.
             </p>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.75rem' }}>
-              I work primarily in Python/Go/Typescript, with deep experience in Azure and AWS infrastructure.
+              I work primarily in Java/Python/Go/Typescript, with deep experience in Azure and AWS infrastructure.
               I've been building with agentic AI frameworks like LangGraph since before the tooling matured.
             </p>
           </RevealOnScroll>
