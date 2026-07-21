@@ -109,7 +109,7 @@ export const Experience = () => {
                         : 'var(--surface-border)',
                       border: `2px solid ${exp.featured ? 'var(--accent)' : 'var(--surface-border)'}`,
                       boxShadow: exp.featured
-                        ? '0 0 12px rgba(168,85,247,0.5)'
+                        ? '0 0 10px rgba(166,111,179,0.32)'
                         : 'none',
                       marginTop: '1rem',
                       zIndex: 1,
@@ -120,7 +120,7 @@ export const Experience = () => {
                   {/* Card */}
                   <div
                     className={exp.featured ? 'card-featured' : 'card'}
-                    style={{ flex: 1, background: 'rgba(26, 26, 31, 0.4)' }}
+                    style={{ flex: 1, background: 'rgba(25, 29, 27, 0.42)' }}
                   >
                     <div
                       style={{
@@ -195,8 +195,8 @@ export const Experience = () => {
                             letterSpacing: '0.08em',
                             textTransform: 'uppercase',
                             color: 'var(--accent)',
-                            background: 'rgba(168,85,247,0.12)',
-                            border: '1px solid rgba(168,85,247,0.3)',
+                            background: 'rgba(166,111,179,0.09)',
+                            border: '1px solid rgba(166,111,179,0.2)',
                             borderRadius: '9999px',
                             padding: '0.125rem 0.5rem',
                           }}

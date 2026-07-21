@@ -9,7 +9,7 @@ export const Home = () => {
       {/* Canvas dot grid — fills section */}
       <InteractiveGrid />
 
-      {/* Central purple glow behind heading */}
+      {/* Restrained plum atmosphere behind the heading */}
       <div
         aria-hidden="true"
         style={{
@@ -19,7 +19,7 @@ export const Home = () => {
           transform: 'translate(-50%, -60%)',
           width: '600px',
           height: '400px',
-          background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(166,111,179,0.14) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
           zIndex: 1,

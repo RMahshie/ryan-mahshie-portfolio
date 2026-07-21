@@ -52,7 +52,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
         width: '100%',
         zIndex: 40,
         height: '64px',
-        background: scrolled ? 'rgba(10, 10, 12, 0.85)' : 'transparent',
+        background: scrolled ? 'rgba(9, 13, 12, 0.88)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--surface-border)' : '1px solid transparent',
         transition: 'background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease',

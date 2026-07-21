@@ -5,23 +5,24 @@
    ============================================================ */
 :root {
   /* Surface hierarchy */
-  --surface-base:    #0a0a0c;
-  --surface-raised:  #111114;
-  --surface-overlay: #1a1a1f;
-  --surface-subtle:  #21212a;
-  --surface-border:  #2a2a35;
+  --surface-base:    #090d0c;
+  --surface-raised:  #121514;
+  --surface-overlay: #191d1b;
+  --surface-subtle:  #202522;
+  --surface-border:  #2b302e;
 
   /* Accent */
-  --accent:            #a855f7;
-  --accent-hover:      #c084fc;
-  --accent-muted:      #7c3aed;
-  --accent-glow:       rgba(168, 85, 247, 0.15);
-  --accent-glow-strong: rgba(168, 85, 247, 0.25);
+  --accent:            #a66fb3;
+  --accent-hover:      #bc86c7;
+  --accent-muted:      #76517f;
+  --accent-glow:       rgba(166, 111, 179, 0.09);
+  --accent-glow-strong: rgba(166, 111, 179, 0.15);
 
   /* Text */
-  --text-primary:   #f0f0f3;
-  --text-secondary: #a0a0b0;
-  --text-tertiary:  #6b6b7b;
+  --text-primary:   #f1eff2;
+  --text-secondary: #aaa7ad;
+  --text-tertiary:  #747078;
+  --text-on-accent: #090d0c;
 
   /* Spacing */
   --space-section: clamp(6rem, 10vw, 10rem);
@@ -38,9 +39,10 @@
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
   --transition-slow: 500ms ease;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
   /* Dark floor (CTA, footer) */
-  --surface-dark: #050507;
+  --surface-dark: #050706;
 }
 
 /* ============================================================
@@ -66,13 +68,13 @@ html, body {
 }
 
 .card:hover {
-  border-color: rgba(168, 85, 247, 0.3);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.08);
+  border-color: rgba(166, 111, 179, 0.22);
+  box-shadow: 0 0 30px rgba(166, 111, 179, 0.05);
 }
 
 .card-featured {
   background: var(--surface-raised);
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(166, 111, 179, 0.16);
   border-radius: 12px;
   padding: 2rem;
   position: relative;
@@ -91,8 +93,8 @@ html, body {
 }
 
 .card-featured:hover {
-  border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: 0 0 40px rgba(168, 85, 247, 0.12);
+  border-color: rgba(166, 111, 179, 0.3);
+  box-shadow: 0 0 40px rgba(166, 111, 179, 0.07);
 }
 
 /* ============================================================
@@ -122,7 +124,7 @@ html, body {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
 .reveal.visible {
@@ -156,7 +158,7 @@ html, body {
   font-weight: 600;
   font-size: 0.9375rem;
   background: var(--accent);
-  color: #ffffff;
+  color: var(--text-on-accent);
   border: none;
   cursor: pointer;
   transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
@@ -166,7 +168,7 @@ html, body {
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 18px rgba(166, 111, 179, 0.22);
 }
 
 /* Ghost/outline button */
@@ -188,7 +190,7 @@ html, body {
 
 .btn-ghost:hover {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--text-on-accent);
   transform: translateY(-2px);
 }
 
@@ -200,9 +202,9 @@ html, body {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  transition: all var(--transition-base);
+  transition: color var(--transition-fast);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .btn-interactive::before {
@@ -210,14 +212,15 @@ html, body {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background: var(--accent);
-  transition: width var(--transition-base);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 200ms var(--ease-out);
 }
 
 .btn-interactive:hover::before {
-  width: 100%;
+  clip-path: inset(0 0 0 0);
 }
 
 .btn-interactive .arrow {
@@ -241,16 +244,16 @@ html, body {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--accent);
-  background: rgba(168, 85, 247, 0.1);
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  background: rgba(166, 111, 179, 0.08);
+  border: 1px solid rgba(166, 111, 179, 0.16);
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .tech-pill:hover {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(166, 111, 179, 0.14);
+  border-color: rgba(166, 111, 179, 0.28);
 }
 
 /* ============================================================
