@@ -55,7 +55,7 @@ export const Contact = () => {
           transform: 'translate(-50%, -50%)',
           width: '700px',
           height: '500px',
-          background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.18) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at center, rgba(166,111,179,0.1) 0%, transparent 65%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
         }}

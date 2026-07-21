@@ -2,19 +2,35 @@ import { useRef, useEffect } from "react";
 
 export const RevealOnScroll = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    let hasRevealed = element.classList.contains("visible");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Apply delay before adding visible class
-            setTimeout(() => {
-              entry.target.classList.add("visible");
-            }, delay);
-          } else {
-            entry.target.classList.remove("visible");
+          if (hasRevealed) return;
+
+          if (!entry.isIntersecting) {
+            if (timeoutRef.current !== null) {
+              window.clearTimeout(timeoutRef.current);
+              timeoutRef.current = null;
+            }
+            return;
           }
+
+          if (timeoutRef.current !== null) return;
+
+          timeoutRef.current = window.setTimeout(() => {
+            entry.target.classList.add("visible");
+            hasRevealed = true;
+            timeoutRef.current = null;
+            observer.unobserve(entry.target);
+          }, delay);
         });
       },
       {
@@ -23,8 +39,15 @@ export const RevealOnScroll = ({ children, className = "", delay = 0 }) => {
       }
     );
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (!hasRevealed) observer.observe(element);
+
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      observer.disconnect();
+    };
   }, [delay]);
 
   return (

@@ -89,9 +89,9 @@ export const InteractiveGrid = ({ className = '' }) => {
         if (dot.opacity > 0.01) {
           const accentMix = mouseFactor * mouseFactor;
           if (accentMix > 0.01) {
-            const r = Math.round(140 + accentMix * (168 - 140));
-            const g = Math.round(140 + accentMix * (85 - 140));
-            const b = Math.round(150 + accentMix * (247 - 150));
+            const r = Math.round(140 + accentMix * (166 - 140));
+            const g = Math.round(140 + accentMix * (111 - 140));
+            const b = Math.round(150 + accentMix * (179 - 150));
             ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${dot.opacity})`;
           } else {
             ctx.fillStyle = `rgba(140, 140, 150, ${dot.opacity})`;
@@ -103,8 +103,8 @@ export const InteractiveGrid = ({ className = '' }) => {
       // Cursor glow layer
       if (mouse.x > 0 && mouse.y > 0) {
         const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 120);
-        gradient.addColorStop(0, 'rgba(168, 85, 247, 0.06)');
-        gradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+        gradient.addColorStop(0, 'rgba(166, 111, 179, 0.06)');
+        gradient.addColorStop(1, 'rgba(166, 111, 179, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(mouse.x - 120, mouse.y - 120, 240, 240);
       }

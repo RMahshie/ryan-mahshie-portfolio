@@ -59,7 +59,7 @@ const ProjectLinks = ({ links, hasDemo, onDemo }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="btn-interactive"
-        style={{ color: 'var(--accent)', fontSize: '0.875rem', padding: '0.25rem 0' }}
+        style={{ color: 'var(--accent)', fontSize: '0.875rem', padding: '0.25rem 0.25rem 0.25rem 0' }}
       >
         {link.label} <span className="arrow">→</span>
       </a>
@@ -68,7 +68,7 @@ const ProjectLinks = ({ links, hasDemo, onDemo }) => (
       <button
         onClick={onDemo}
         className="btn-interactive"
-        style={{ color: 'var(--accent)', fontSize: '0.875rem', padding: '0.25rem 0', background: 'none', border: 'none', cursor: 'pointer' }}
+        style={{ color: 'var(--accent)', fontSize: '0.875rem', padding: '0.25rem 0.25rem 0.25rem 0', background: 'none', border: 'none', cursor: 'pointer' }}
       >
         Watch Demo <span className="arrow">→</span>
       </button>
@@ -102,7 +102,7 @@ export const Projects = () => {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgba(5,7,6,0.9)',
             zIndex: 50,
             display: 'flex',
             alignItems: 'center',
@@ -129,7 +129,7 @@ export const Projects = () => {
                 position: 'absolute',
                 top: '0.75rem',
                 right: '0.75rem',
-                background: 'rgba(168,85,247,0.8)',
+                background: 'rgba(118,81,127,0.95)',
                 border: '1px solid var(--accent)',
                 borderRadius: '50%',
                 width: '2.25rem',
@@ -139,7 +139,7 @@ export const Projects = () => {
                 justifyContent: 'center',
                 cursor: 'pointer',
                 zIndex: 1,
-                color: '#fff',
+                color: 'var(--text-primary)',
               }}
               aria-label="Close modal"
             >
@@ -224,7 +224,7 @@ export const Projects = () => {
                   left: '-10%',
                   width: '120%',
                   height: '80%',
-                  background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.1) 0%, transparent 70%)',
+                  background: 'radial-gradient(ellipse at center, rgba(166,111,179,0.07) 0%, transparent 70%)',
                   filter: 'blur(40px)',
                   pointerEvents: 'none',
                   zIndex: 0,

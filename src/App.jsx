@@ -21,7 +21,7 @@ function App() {
       >
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         {menuOpen && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 opacity-0 animate-fade-in" />
+          <div className="fixed inset-0 bg-[#050706]/60 backdrop-blur-sm z-30 opacity-0 animate-fade-in" />
         )}
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Home />

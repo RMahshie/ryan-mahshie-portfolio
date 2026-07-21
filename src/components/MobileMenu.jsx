@@ -13,8 +13,8 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         top: 0,
         left: 0,
         width: '100%',
-        height: menuOpen ? '100vh' : 0,
-        background: 'rgba(10, 10, 12, 0.97)',
+        height: '100dvh',
+        background: 'rgba(9, 13, 12, 0.97)',
         backdropFilter: 'blur(16px)',
         zIndex: 40,
         display: 'flex',
@@ -22,10 +22,15 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         alignItems: 'center',
         justifyContent: 'center',
         opacity: menuOpen ? 1 : 0,
+        visibility: menuOpen ? 'visible' : 'hidden',
+        transform: menuOpen ? 'translateY(0)' : 'translateY(-8px)',
         pointerEvents: menuOpen ? 'auto' : 'none',
-        transition: 'opacity 0.3s ease, height 0.3s ease',
+        transition: menuOpen
+          ? 'opacity 220ms var(--ease-out), transform 220ms var(--ease-out), visibility 0s'
+          : 'opacity 150ms var(--ease-out), transform 150ms var(--ease-out), visibility 0s linear 150ms',
         overflow: 'hidden',
       }}
+      aria-hidden={!menuOpen}
       onClick={(e) => { if (e.target === e.currentTarget) setMenuOpen(false); }}
     >
       <button
@@ -58,8 +63,10 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             textDecoration: 'none',
             margin: '0.875rem 0',
             opacity: menuOpen ? 1 : 0,
-            transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
-            transition: `opacity 0.3s ease ${i * 50}ms, transform 0.3s ease ${i * 50}ms`,
+            transform: menuOpen ? 'translateY(0)' : 'translateY(12px)',
+            transition: menuOpen
+              ? `opacity 200ms var(--ease-out) ${i * 50}ms, transform 200ms var(--ease-out) ${i * 50}ms`
+              : 'opacity 120ms ease, transform 150ms var(--ease-out)',
           }}
           onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
           onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
