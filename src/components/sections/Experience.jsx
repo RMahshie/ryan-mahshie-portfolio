@@ -2,12 +2,21 @@ import { RevealOnScroll } from '../RevealOnScroll';
 
 const experiences = [
   {
+    company: 'Amazon Web Services',
+    companyUrl: 'https://aws.amazon.com/emr/',
+    title: 'Software Development Engineer Intern',
+    dates: 'Sep. 2026 – Dec. 2026',
+    incoming: true,
+    description: 'Joining the EMR team in Palo Alto, CA.',
+    featured: true,
+  },
+  {
     company: 'Visa CyberSource',
     companyUrl: 'https://www.cybersource.com/',
     title: 'Backend Software Engineering Intern',
     dates: 'Summer 2026',
     description: 'Working on event-driven Java services and applied AI.',
-    featured: true,
+    featured: false,
   },
   {
     company: 'OpsCanvas',
@@ -183,6 +192,23 @@ export const Experience = () => {
                       >
                         {exp.title}
                       </span>
+                      {exp.incoming && (
+                        <span
+                          style={{
+                            fontSize: '0.625rem',
+                            fontWeight: 700,
+                            letterSpacing: '0.08em',
+                            textTransform: 'uppercase',
+                            color: 'var(--accent)',
+                            background: 'rgba(166,111,179,0.09)',
+                            border: '1px solid rgba(166,111,179,0.2)',
+                            borderRadius: '9999px',
+                            padding: '0.125rem 0.5rem',
+                          }}
+                        >
+                          Incoming
+                        </span>
+                      )}
                     </div>
 
                     <p

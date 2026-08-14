@@ -89,7 +89,7 @@ export const Home = () => {
             letterSpacing: '0.02em',
           }}
         >
-          Currently recruiting for Fall 2026.
+          Currently looking for 2027 new grad opportunities.
         </p>
 
         {/* CTAs */}
