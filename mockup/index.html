@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan Mahshie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1e2712;
+      --fg: #f2e8c9;
+      --fg-2: color-mix(in srgb, var(--fg) 70%, var(--bg));
+      --fg-3: color-mix(in srgb, var(--fg) 48%, var(--bg));
+
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --display-weight: 400;
+      --display-tracking: -0.01em;
+
+      --gutter: clamp(20px, 4vw, 48px);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 300ms ease, color 300ms ease;
+    }
+
+    a { color: inherit; }
+
+    /* ---------- Header ---------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px var(--gutter);
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-weight: var(--display-weight);
+      font-size: 20px;
+      letter-spacing: var(--display-tracking);
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 4px; }
+
+    nav { margin-right: -14px; }
+
+    .nav-btn {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      color: color-mix(in srgb, var(--fg) 55%, var(--bg));
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 150ms ease;
+    }
+    .nav-btn:hover,
+    .nav-btn[aria-current="page"] { color: var(--fg); }
+
+    /* ---------- Main ---------- */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 var(--gutter) 64px;
+    }
+    body[data-page="photography"] main { align-items: flex-start; padding-top: 24px; }
+    /* Experience and Projects share one heading position */
+    body[data-page="experience"] main,
+    body[data-page="projects"] main { align-items: flex-start; padding-top: 8vh; }
+
+    .page { width: 100%; max-width: 640px; }
+    .page.wide { max-width: 1120px; }
+    .page.enter { animation: enter 260ms var(--ease-out); }
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .page.enter { animation: none; }
+    }
+
+    h1, h2 {
+      font-family: var(--font-display);
+      font-weight: var(--display-weight);
+      letter-spacing: var(--display-tracking);
+      margin: 0;
+    }
+    h1 { font-size: clamp(44px, 6vw, 64px); line-height: 1.05; margin-bottom: 20px; }
+    h2 { font-size: 30px; line-height: 1.2; margin-bottom: 28px; }
+
+    .page.about { max-width: none; text-align: center; margin-bottom: 35vh; }
+    .page.about h1 { margin-bottom: 16px; }
+    .tagline { font-size: 19px; line-height: 1.5; color: var(--fg-2); margin: 0; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      padding: 0 calc(var(--gutter) - 14px) 20px var(--gutter);
+    }
+
+    /* ---------- Experience ---------- */
+    .page.experience { max-width: 760px; }
+    .roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+    .loc { font-weight: 400; color: var(--fg-3); }
+    .company {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--fg-2);
+      margin-top: 6px;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .company:hover { color: var(--fg); }
+    .company .arrow {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 13px;
+      margin-left: 5px;
+      color: var(--fg-3);
+      transition: color 150ms ease;
+    }
+    .company:hover .arrow { color: var(--fg); }
+    .summary { font-size: 15px; line-height: 1.65; color: var(--fg-2); margin: 8px 0 0; text-wrap: pretty; }
+
+    /* ---------- Projects ---------- */
+    .page.projects-page { max-width: 760px; }
+    .projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+
+    .row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .name { font-size: 16px; font-weight: 600; }
+    .meta { font-size: 14px; color: var(--fg-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .desc { font-size: 15px; line-height: 1.6; color: var(--fg-2); margin: 8px 0 0; }
+    .links { display: flex; gap: 4px; margin: -8px -14px -8px 0; }
+
+    /* ---------- Gallery ---------- */
+    .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+    .page-head h2 { margin: 0; }
+
+    .gallery { columns: 3 280px; column-gap: 12px; padding-bottom: 32px; }
+    .shot {
+      display: block;
+      width: 100%;
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      border-radius: 6px;
+      break-inside: avoid;
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+    }
+    .shot span {
+      position: absolute;
+      left: 10px;
+      bottom: 8px;
+      font: 500 11px var(--font-body);
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .shot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background-color 200ms ease;
+    }
+    .shot:hover::after { background: rgba(0, 0, 0, 0.12); }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5vmin;
+      background: color-mix(in srgb, var(--bg) 92%, black);
+      cursor: zoom-out;
+      animation: fade 200ms ease;
+    }
+    .lightbox[hidden] { display: none; }
+    .lightbox div { max-width: 100%; max-height: 100%; height: 88vh; border-radius: 6px; }
+    @keyframes fade { from { opacity: 0; } }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 759px) {
+      header { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 8px; }
+      nav { flex-wrap: wrap; margin-left: -14px; margin-right: 0; width: calc(100% + 14px); }
+      body:not([data-page="about"]) main { align-items: flex-start; padding-top: 32px; }
+      .row { flex-wrap: wrap; row-gap: 4px; }
+      .page-head { flex-direction: column; gap: 6px; }
+      .gallery { columns: 2; column-gap: 8px; }
+      .shot { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="wordmark" href="#/about">Ryan Mahshie</a>
+    <nav aria-label="Main">
+      <a class="nav-btn" data-page="about" href="#/about">About</a>
+      <a class="nav-btn" data-page="experience" href="#/experience">Experience</a>
+      <a class="nav-btn" data-page="projects" href="#/projects">Projects</a>
+      <a class="nav-btn" data-page="photography" href="#/photography">Photography</a>
+      <a class="nav-btn resume" href="../public/Ryan_Mahshie_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section class="page about" data-page="about">
+      <h1>Ryan Mahshie</h1>
+      <p class="tagline">Backend software engineer. Currently at AWS, previously at Visa.</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="page experience" data-page="experience" hidden>
+      <h2>Experience</h2>
+      <ol class="roles">
+        <li>
+          <div class="row">
+            <span class="name">Software Engineer Intern <span class="loc">– Palo Alto, CA</span></span>
+            <span class="meta">Sep – Dec 2026</span>
+          </div>
+          <a class="company" href="https://www.linkedin.com/company/amazon-web-services/" target="_blank" rel="noopener">Amazon Web Services<span class="arrow">↗</span></a>
+          <p class="summary">Developed a Java service that connects ML models to EMR Managed Scaling, so Spark clusters scale on predicted demand instead of current load.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">Software Engineer Intern <span class="loc">– Bellevue, WA</span></span>
+            <span class="meta">Jun – Aug 2026</span>
+          </div>
+          <a class="company" href="https://www.linkedin.com/company/visa/" target="_blank" rel="noopener">Visa<span class="arrow">↗</span></a>
+          <p class="summary">Built and deployed a real-time Java/Vert.x API that ranks payment methods using XGBoost4J models trained on 10M+ transactions.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">Software Engineer Co-op <span class="loc">– Alexandria, VA</span></span>
+            <span class="meta">Jul – Dec 2025</span>
+          </div>
+          <a class="company" href="https://www.linkedin.com/company/opscanvas/" target="_blank" rel="noopener">OpsCanvas<span class="arrow">↗</span></a>
+          <p class="summary">Expanded ZombieScan from AWS to Azure by writing all of its Azure IaC in Bicep, rewriting thousands of lines of Dockerized Python, and extending the Go API.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">AI Software Engineer Intern <span class="loc">– McLean, VA</span></span>
+            <span class="meta">Jun – Jul 2025</span>
+          </div>
+          <a class="company" href="https://www.linkedin.com/company/pelagicai/" target="_blank" rel="noopener">Pelagic AI<span class="arrow">↗</span></a>
+          <p class="summary">Designed 8-node cyclic LangGraph agents and custom MCP tools that plan aircraft movement across large airport graphs.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Projects -->
+    <section class="page projects-page" data-page="projects" hidden>
+      <h2>Projects</h2>
+      <ul class="projects">
+        <li>
+          <div class="row">
+            <span class="name">LawSearch AI</span>
+            <span class="links"><a class="nav-btn" href="https://github.com/RMahshie/lawsearchprod" target="_blank" rel="noopener">GitHub ↗</a></span>
+          </div>
+          <p class="desc">Search over 2,000+ pages of federal spending bills, where every figure in an answer links to its source.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">Sonara</span>
+            <span class="links">
+              <a class="nav-btn" href="https://sonara.up.railway.app/" target="_blank" rel="noopener">Try it ↗</a>
+              <a class="nav-btn" href="https://github.com/RMahshie/sonara" target="_blank" rel="noopener">GitHub ↗</a>
+            </span>
+          </div>
+          <p class="desc">Room acoustics analyzer that measures within about ±3 dB of professional tools, using a cheap USB mic.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">Nitpick</span>
+            <span class="links"><a class="nav-btn" href="https://github.com/RMahshie/codereviewer" target="_blank" rel="noopener">GitHub ↗</a></span>
+          </div>
+          <p class="desc">GitHub Action for AI code review that saves deep analysis for complex, cross-file changes.</p>
+        </li>
+        <li>
+          <div class="row">
+            <span class="name">Tokenburn</span>
+            <span class="links">
+              <a class="nav-btn" href="https://github.com/RMahshie/homebrew-tap" target="_blank" rel="noopener">Install ↗</a>
+              <a class="nav-btn" href="https://github.com/RMahshie/tokenburn" target="_blank" rel="noopener">GitHub ↗</a>
+            </span>
+          </div>
+          <p class="desc">Terminal dashboard for Claude Code and Codex usage, built from local session files.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Photography -->
+    <section class="page wide" data-page="photography" hidden>
+      <div class="page-head">
+        <h2>Photography</h2>
+        <span class="meta">Placeholder tiles. Your photos go here.</span>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="nav-btn" href="mailto:ryan@mahshie.net">Email</a>
+    <a class="nav-btn" href="https://github.com/RMahshie" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="nav-btn" href="https://linkedin.com/in/ryan-mahshie" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden><div></div></div>
+
+  <script>
+    // ---------- Routing ----------
+    const PAGES = ['about', 'experience', 'projects', 'photography'];
+    const TITLES = { about: 'Ryan Mahshie', experience: 'Experience', projects: 'Projects', photography: 'Photography' };
+
+    function route() {
+      const requested = location.hash.replace(/^#\/?/, '');
+      const page = PAGES.includes(requested) ? requested : 'about';
+      document.body.dataset.page = page;
+
+      document.querySelectorAll('.page').forEach((section) => {
+        const active = section.dataset.page === page;
+        section.hidden = !active;
+        if (active) {
+          section.classList.remove('enter');
+          void section.offsetWidth;
+          section.classList.add('enter');
+        }
+      });
+
+      document.querySelectorAll('.nav-btn[data-page]').forEach((link) => {
+        if (link.dataset.page === page) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+
+      document.title = page === 'about' ? TITLES.about : `${TITLES[page]} · Ryan Mahshie`;
+      window.scrollTo(0, 0);
+    }
+    addEventListener('hashchange', route);
+    route();
+
+    // ---------- Gallery placeholders ----------
+    const SHOTS = [
+      ['4/5', '#9fb3bf', '#d9c9a8', '#5b6b50'],
+      ['3/2', '#2d3a4a', '#6c7f93', '#c2a87d'],
+      ['1/1', '#c9b79c', '#8c7a62', '#3e3a33'],
+      ['2/3', '#1f2b2a', '#3f5a52', '#a8b8a6'],
+      ['3/2', '#e0d6c2', '#b7a58a', '#6d5d4b'],
+      ['4/5', '#47566b', '#9aa6b2', '#e2ddd2'],
+      ['3/2', '#2b2a33', '#5b4d5e', '#c79b7c'],
+      ['2/3', '#7d8f7a', '#b9c0a3', '#efe9d8'],
+      ['1/1', '#394552', '#7e8d8a', '#d1c6ad'],
+      ['4/5', '#5e6e7e', '#a7b4bd', '#f0ece2'],
+      ['3/2', '#3a2f2a', '#7a5c48', '#d6b48c'],
+      ['2/3', '#25332f', '#5c7a6c', '#b3c2b0'],
+    ];
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.firstElementChild;
+
+    SHOTS.forEach(([ratio, a, b, c], i) => {
+      const shot = document.createElement('button');
+      shot.className = 'shot';
+      shot.style.aspectRatio = ratio;
+      shot.style.background = `linear-gradient(180deg, ${a} 0%, ${b} 58%, ${c} 100%)`;
+      shot.innerHTML = `<span>${String(i + 1).padStart(2, '0')}</span>`;
+      shot.setAttribute('aria-label', `Open photo ${i + 1}`);
+      shot.addEventListener('click', () => {
+        lightboxImg.style.aspectRatio = ratio;
+        lightboxImg.style.background = shot.style.background;
+        lightbox.hidden = false;
+      });
+      gallery.appendChild(shot);
+    });
+
+    lightbox.addEventListener('click', () => { lightbox.hidden = true; });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.hidden = true; });
+  </script>
+</body>
+</html>

@@ -18,27 +18,26 @@ Personal portfolio website for Ryan Mahshie (ryan-mahshie.xyz), deployed to GitH
 
 - **React 19** with JSX (no TypeScript)
 - **Vite 6** as build tool
-- **Tailwind CSS v4** via `@tailwindcss/vite` plugin (imported in `index.css` with `@import "tailwindcss"`)
-- **EmailJS** for contact form functionality
-- Font: Space Grotesk (loaded from Google Fonts in `index.html`)
+- Plain CSS in `src/index.css` (no Tailwind)
+- Fonts: Newsreader for headings, Inter for body text (loaded from Google Fonts in `index.html`)
 
 ## Architecture
 
-Single-page portfolio with no routing. The app renders a sequence of full-page sections:
+Minimal site where the nav switches between pages instead of scrolling. On desktop each page fits on one screen (Photography may scroll, and phones scroll).
 
-- `App.jsx` — Root component managing loading state and mobile menu state
-- `src/components/LoadingScreen.jsx` — Initial loading animation
-- `src/components/Navbar.jsx` / `MobileMenu.jsx` — Navigation (scroll-based section detection)
-- `src/components/sections/` — Page sections: `Home`, `About`, `Experience`, `Projects`
-- `src/components/Footer.jsx` — Footer with contact form
-- `src/components/RevealOnScroll.jsx` — Intersection Observer wrapper for scroll animations
+- `src/App.jsx` — Page list, title updates, and layout (header, current page, footer)
+- `src/useHashRoute.js` — Hash routing (`#/about`, `#/experience`, ...), so links and the back button work
+- `src/components/Header.jsx` — Name plus nav links and a Resume link to `public/Ryan_Mahshie_Resume.pdf`
+- `src/components/Footer.jsx` — Email, GitHub, LinkedIn links in the bottom-right
+- `src/pages/` — `About`, `Experience`, `Projects`, `Photography`; content lives in each file as data arrays
+- `src/data/photos.js` — Photo list for the gallery. The Photography page and nav link stay hidden while it is empty.
 
-Custom CSS animations are defined in `src/index.css` (blink, loading-bar, fade-in, reveal, btn-interactive, nav-indicator).
+Design: olive background `#1e2712`, cream text `#f2e8c9`. Links are plain text that brightens on hover, with no boxes or underlines. `mockup/index.html` is the standalone mockup the site was built from.
 
 ## Environment
 
-- `.env` contains EmailJS credentials (SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY) — prefixed with `VITE_` for Vite exposure
-- Static assets in `public/` include a demo video, favicon, robots.txt, and sitemap.xml
+- `.env` holds EmailJS credentials from the old contact form; nothing reads them anymore
+- Static assets in `public/` include the resume PDF, favicon, robots.txt, and sitemap.xml
 
 ## ESLint Config
 
@@ -46,7 +45,7 @@ Flat config in `eslint.config.js`. Uses react-hooks and react-refresh plugins. `
 
 ## Project Skills
 
-Three custom skills live in `.claude/skills/`. Read the relevant one before making changes in its domain:
+Three custom skills live in `.claude/skills/`. They describe the previous scrolling, purple-accented design, so where they conflict with the minimal design above, follow the current code:
 
 - **`.claude/skills/design-system.md`** — Read whenever creating or modifying UI components, sections, layouts, or visual elements. Defines the canonical color palette, surface hierarchy, typography scale, spacing system, glow/gradient techniques, card treatment, and accent color rules.
 - **`.claude/skills/canvas-effects.md`** — Read when building animated backgrounds, dot/particle grids, hover-reactive visual elements, or any canvas-based decorative effect.
