@@ -1,38 +1,40 @@
-import './App.css'
-import { useState } from "react";
-import { Navbar } from './components/Navbar';
-import { MobileMenu } from './components/MobileMenu';
-import { Home } from './components/sections/Home'
-import { About } from './components/sections/About';
-import { Experience } from './components/sections/Experience';
-import { Projects } from './components/sections/Projects';
-import { Contact } from './components/sections/Contact';
+import { useEffect } from 'react';
+import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import "./index.css"
+import { About } from './pages/About';
+import { Experience } from './pages/Experience';
+import { Projects } from './pages/Projects';
+import { Photography } from './pages/Photography';
+import { photos } from './data/photos';
+import { useHashRoute } from './useHashRoute';
+
+const pages = [
+  { id: 'about', label: 'About', title: 'Ryan Mahshie | Backend Engineer', Page: About },
+  { id: 'experience', label: 'Experience', title: 'Experience | Ryan Mahshie', Page: Experience },
+  { id: 'projects', label: 'Projects', title: 'Projects | Ryan Mahshie', Page: Projects },
+  ...(photos.length > 0
+    ? [{ id: 'photography', label: 'Photography', title: 'Photography | Ryan Mahshie', Page: Photography }]
+    : []),
+];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const route = useHashRoute(pages.map((p) => p.id), 'about');
+  const { id, title, Page } = pages.find((p) => p.id === route);
+
+  useEffect(() => {
+    document.title = title;
+    window.scrollTo(0, 0);
+  }, [title]);
 
   return (
-    <>
-      <div
-        style={{ background: 'var(--surface-base)' }}
-        className="min-h-screen"
-      >
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        {menuOpen && (
-          <div className="fixed inset-0 bg-[#050706]/60 backdrop-blur-sm z-30 opacity-0 animate-fade-in" />
-        )}
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Home />
-        <About />
-        <Experience />
-        <Projects />
-        <Contact />
-        <Footer />
-      </div>
-    </>
-  )
+    <div className="app" data-page={id}>
+      <Header pages={pages} current={id} />
+      <main>
+        <Page />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

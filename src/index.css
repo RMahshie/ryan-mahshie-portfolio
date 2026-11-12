@@ -1,291 +1,191 @@
-@import "tailwindcss";
-
-/* ============================================================
-   DESIGN SYSTEM — CSS Custom Properties
-   ============================================================ */
 :root {
-  /* Surface hierarchy */
-  --surface-base:    #090d0c;
-  --surface-raised:  #121514;
-  --surface-overlay: #191d1b;
-  --surface-subtle:  #202522;
-  --surface-border:  #2b302e;
+  --bg: #1e2712;
+  --fg: #f2e8c9;
+  --fg-2: color-mix(in srgb, var(--fg) 70%, var(--bg));
+  --fg-3: color-mix(in srgb, var(--fg) 48%, var(--bg));
+  --fg-nav: color-mix(in srgb, var(--fg) 55%, var(--bg));
 
-  /* Accent */
-  --accent:            #a66fb3;
-  --accent-hover:      #bc86c7;
-  --accent-muted:      #76517f;
-  --accent-glow:       rgba(166, 111, 179, 0.09);
-  --accent-glow-strong: rgba(166, 111, 179, 0.15);
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 
-  /* Text */
-  --text-primary:   #f1eff2;
-  --text-secondary: #aaa7ad;
-  --text-tertiary:  #747078;
-  --text-on-accent: #090d0c;
-
-  /* Spacing */
-  --space-section: clamp(6rem, 10vw, 10rem);
-  --space-block:   clamp(3rem, 5vw, 5rem);
-  --space-element: 1.5rem;
-  --space-tight:   0.75rem;
-
-  /* Content width */
-  --max-width-content: 1100px;
-  --max-width-narrow:  720px;
-  --gutter: clamp(1.5rem, 4vw, 3rem);
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 300ms ease;
-  --transition-slow: 500ms ease;
+  --gutter: clamp(20px, 4vw, 48px);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-
-  /* Dark floor (CTA, footer) */
-  --surface-dark: #050706;
 }
 
-/* ============================================================
-   BASE
-   ============================================================ */
+* { box-sizing: border-box; }
+
 html, body {
   margin: 0;
-  padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-  background: var(--surface-base);
-  color: var(--text-primary);
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ============================================================
-   CARD PATTERNS
-   ============================================================ */
-.card {
-  background: var(--surface-raised);
-  border: 1px solid var(--surface-border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+a { color: inherit; }
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover {
-  border-color: rgba(166, 111, 179, 0.22);
-  box-shadow: 0 0 30px rgba(166, 111, 179, 0.05);
-}
-
-.card-featured {
-  background: var(--surface-raised);
-  border: 1px solid rgba(166, 111, 179, 0.16);
-  border-radius: 12px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
-}
-
-.card-featured::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-
-.card-featured:hover {
-  border-color: rgba(166, 111, 179, 0.3);
-  box-shadow: 0 0 40px rgba(166, 111, 179, 0.07);
-}
-
-/* ============================================================
-   LOADING SCREEN ANIMATIONS
-   ============================================================ */
-@layer utilities {
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
-  .animate-blink {
-    animation: blink 0.8s step-end infinite;
-  }
-
-  @keyframes loading {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(250%); }
-  }
-  .animate-loading-bar {
-    animation: loading 0.8s ease infinite;
-  }
-}
-
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================================================
-   FADE IN
-   ============================================================ */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.2s ease forwards;
-}
-
-/* ============================================================
-   BUTTON STYLES
-   ============================================================ */
-
-/* Primary filled button */
-.btn-primary {
-  display: inline-flex;
+/* ---------- Header ---------- */
+header {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  background: var(--accent);
-  color: var(--text-on-accent);
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px var(--gutter);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
-.btn-primary:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(166, 111, 179, 0.22);
-}
+nav { display: flex; gap: 4px; margin-right: -14px; }
 
-/* Ghost/outline button */
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  cursor: pointer;
-  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-fast);
-  text-decoration: none;
-}
-
-.btn-ghost:hover {
-  background: var(--accent);
-  color: var(--text-on-accent);
-  transform: translateY(-2px);
-}
-
-/* Legacy interactive button */
-.btn-interactive {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+/* Plain text links that brighten on hover: nav, footer, project links */
+.nav-link {
+  font-size: 14px;
   font-weight: 500;
-  transition: color var(--transition-fast);
-  position: relative;
-  overflow: visible;
+  padding: 8px 14px;
+  color: var(--fg-nav);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms ease;
 }
+.nav-link:hover,
+.nav-link[aria-current="page"] { color: var(--fg); }
 
-.btn-interactive::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
+/* ---------- Main ---------- */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gutter) 64px;
+}
+/* Experience and Projects share one heading position */
+.app[data-page="experience"] main,
+.app[data-page="projects"] main { align-items: flex-start; padding-top: 8vh; }
+.app[data-page="photography"] main { align-items: flex-start; padding-top: 24px; }
+
+.page {
   width: 100%;
-  height: 2px;
-  background: var(--accent);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 200ms var(--ease-out);
+  max-width: 640px;
+  animation: enter 260ms var(--ease-out);
 }
-
-.btn-interactive:hover::before {
-  clip-path: inset(0 0 0 0);
+.page.wide { max-width: 1120px; }
+@keyframes enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
-
-.btn-interactive .arrow {
-  transition: transform var(--transition-base);
-}
-
-.btn-interactive:hover .arrow {
-  transform: translateX(4px);
-}
-
-.btn-interactive:hover {
-  color: var(--accent-hover);
-}
-
-/* ============================================================
-   TECH PILL / BADGE
-   ============================================================ */
-.tech-pill {
-  display: inline-block;
-  font-family: "Space Grotesk", monospace;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--accent);
-  background: rgba(166, 111, 179, 0.08);
-  border: 1px solid rgba(166, 111, 179, 0.16);
-  border-radius: 9999px;
-  padding: 0.25rem 0.75rem;
-  transition: background var(--transition-fast), border-color var(--transition-fast);
-}
-
-.tech-pill:hover {
-  background: rgba(166, 111, 179, 0.14);
-  border-color: rgba(166, 111, 179, 0.28);
-}
-
-/* ============================================================
-   NAV INDICATOR
-   ============================================================ */
-.nav-indicator {
-  animation: nav-indicator-appear 0.3s ease forwards;
-}
-
-@keyframes nav-indicator-appear {
-  from { transform: scaleX(0); opacity: 0; }
-  to   { transform: scaleX(1); opacity: 1; }
-}
-
-/* ============================================================
-   SCROLL CHEVRON (hero scroll indicator)
-   ============================================================ */
-@keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(6px); }
-}
-
-.animate-bounce-slow {
-  animation: bounce-slow 2s ease-in-out infinite;
-}
-
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  .page { animation: none; }
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+h1 { font-size: clamp(44px, 6vw, 64px); line-height: 1.05; margin-bottom: 16px; }
+h2 { font-size: 30px; line-height: 1.2; margin-bottom: 28px; }
+
+/* ---------- About ---------- */
+.page.about { max-width: none; text-align: center; margin-bottom: 35vh; }
+.tagline { font-size: 19px; line-height: 1.5; color: var(--fg-2); margin: 0; }
+
+/* ---------- Experience + Projects ---------- */
+.page.experience,
+.page.projects { max-width: 760px; }
+
+.entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+
+.row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.name { font-size: 16px; font-weight: 600; }
+.loc { font-weight: 400; color: var(--fg-3); }
+.meta { font-size: 14px; color: var(--fg-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.desc { font-size: 15px; line-height: 1.6; color: var(--fg-2); margin: 8px 0 0; text-wrap: pretty; }
+.links { display: flex; gap: 4px; margin: -8px -14px -8px 0; }
+
+.company {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.company .arrow {
+  margin-left: 5px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 13px;
+  color: var(--fg-3);
+  transition: color 150ms ease;
+}
+.company:hover,
+.company:hover .arrow { color: var(--fg); }
+
+/* ---------- Photography ---------- */
+.gallery { columns: 3 280px; column-gap: 12px; padding-bottom: 32px; }
+.shot {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  break-inside: avoid;
+  cursor: zoom-in;
+  background: color-mix(in srgb, var(--fg) 6%, var(--bg));
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 200ms ease;
+}
+.shot:hover img { opacity: 0.88; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vmin;
+  background: color-mix(in srgb, var(--bg) 92%, black);
+  cursor: zoom-out;
+  animation: fade 200ms ease;
+}
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+@keyframes fade { from { opacity: 0; } }
+
+/* ---------- Footer ---------- */
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 0 calc(var(--gutter) - 14px) 20px var(--gutter);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 759px) {
+  header { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 8px; }
+  nav { flex-wrap: wrap; margin-left: -14px; margin-right: 0; width: calc(100% + 14px); }
+  .app:not([data-page="about"]) main { align-items: flex-start; padding-top: 32px; }
+  .row { flex-wrap: wrap; row-gap: 4px; }
+  .gallery { columns: 2; column-gap: 8px; }
+  .shot { margin-bottom: 8px; }
 }
