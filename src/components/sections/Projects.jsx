@@ -11,14 +11,6 @@ const projects = [
     featured: true,
   },
   {
-    name: 'Payback',
-    description: 'A self-hosted Go app, shipped as a Docker image, that reads my Plex watch history and prices every play the cheapest way it could have been streamed: 30-day subscriptions that renew only while I keep watching, rentals for one-off movies, and per-episode buys for shows no service carries. It shows how much of my NAS has paid for itself.',
-    tech: ['Go', 'Docker', 'Plex API', 'TMDB API', 'GitHub Actions'],
-    links: [{ label: 'GitHub', url: 'https://github.com/RMahshie/plex-payback' }],
-    hasDemo: false,
-    featured: false,
-  },
-  {
     name: 'Sonara',
     description: 'A room acoustics analyzer for improving speaker setup with a cheap USB microphone. Users record a sine sweep and get frequency response, room modes, and setup guidance. I built the Go backend, used Python for FFT analysis, and got results within about ±3 dB of professional measurement tools.',
     tech: ['Go', 'Python', 'Huma', 'PostgreSQL', 'Docker', 'WebRTC', 'React'],
@@ -206,6 +198,7 @@ export const Projects = () => {
           style={{
             display: 'grid',
             gridTemplateColumns: '2fr 1fr',
+            gridTemplateRows: 'auto auto',
             gap: '1rem',
           }}
         >
@@ -214,6 +207,8 @@ export const Projects = () => {
             <div
               className="card-featured"
               style={{
+                gridColumn: '1',
+                gridRow: '1 / 4',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -260,33 +255,66 @@ export const Projects = () => {
             </div>
           </RevealOnScroll>
 
-          {rest.map((p, i) => (
-            // With an odd number of cards the last one spans the row instead of leaving a hole.
-            <RevealOnScroll key={p.name} delay={150 + 75 * i} className={(rest.length + 1) % 2 && i === rest.length - 1 ? 'span-row' : ''}>
-              <div
-                className="card"
-                style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                  <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
-                    {p.name}
-                  </h3>
-                  <ProjectLinks links={p.links} hasDemo={false} />
-                </div>
-                <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
-                  {p.description}
-                </p>
-                <TechPills tech={p.tech} />
+          {/* Sonara */}
+          <RevealOnScroll delay={150}>
+            <div
+              className="card"
+              style={{ gridColumn: '2', gridRow: '1', display: 'flex', flexDirection: 'column' }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
+                  {rest[0].name}
+                </h3>
+                <ProjectLinks links={rest[0].links} hasDemo={false} />
               </div>
-            </RevealOnScroll>
-          ))}
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                {rest[0].description}
+              </p>
+              <TechPills tech={rest[0].tech} />
+            </div>
+          </RevealOnScroll>
+
+          {/* Nitpick */}
+          <RevealOnScroll delay={225}>
+            <div
+              className="card"
+              style={{ gridColumn: '2', gridRow: '2', display: 'flex', flexDirection: 'column' }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
+                  {rest[1].name}
+                </h3>
+                <ProjectLinks links={rest[1].links} hasDemo={false} />
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                {rest[1].description}
+              </p>
+              <TechPills tech={rest[1].tech} />
+            </div>
+          </RevealOnScroll>
+
+          {/* Tokenburn */}
+          <RevealOnScroll delay={300}>
+            <div
+              className="card"
+              style={{ gridColumn: '2', gridRow: '3', display: 'flex', flexDirection: 'column' }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
+                  {rest[2].name}
+                </h3>
+                <ProjectLinks links={rest[2].links} hasDemo={false} />
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                {rest[2].description}
+              </p>
+              <TechPills tech={rest[2].tech} />
+            </div>
+          </RevealOnScroll>
         </div>
       </div>
 
       <style>{`
-        .projects-bento > .span-row {
-          grid-column: 1 / -1;
-        }
         @media (max-width: 768px) {
           .projects-bento {
             grid-template-columns: 1fr !important;
