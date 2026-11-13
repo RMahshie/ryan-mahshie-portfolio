@@ -67,21 +67,30 @@ const Gallery = ({ photos, onOpen }) => {
   );
 };
 
-// Lightbox shows the gallery-size file at once and swaps in the full-resolution one
-// (a few MB) as soon as it has downloaded.
+// Lightbox shows the gallery-size file at once, then swaps in the 4800 px file and
+// finally the full-resolution original as each finishes downloading, in place.
 const Lightbox = ({ photo, onClose }) => {
-  const [loaded, setLoaded] = useState(null);
+  const [shown, setShown] = useState(photo.src);
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setLoaded(photo.full);
-    img.src = photo.full;
-    return () => { img.onload = null; };
+    setShown(photo.src);
+    let cancelled = false;
+    const load = (url) => new Promise((resolve) => {
+      const img = new Image();
+      img.onload = img.onerror = () => resolve(img.complete && img.naturalWidth > 0);
+      img.src = url;
+    });
+    (async () => {
+      for (const url of [photo.large, photo.full]) {
+        if (await load(url) && !cancelled) setShown(url);
+      }
+    })();
+    return () => { cancelled = true; };
   }, [photo]);
 
   return (
     <div className="lightbox" onClick={onClose}>
-      <img src={loaded === photo.full ? photo.full : photo.src} alt={photo.alt} />
+      <img src={shown} alt={photo.alt} />
     </div>
   );
 };
