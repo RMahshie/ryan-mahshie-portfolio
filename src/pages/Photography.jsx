@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { albums } from '../data/photos';
 
 const GAP = 12;
@@ -99,15 +99,143 @@ const Lightbox = ({ photo, onClose }) => {
     return () => { cancelled = true; };
   }, [photo]);
 
+  // Zoom and pan happen here, not in the browser: pinching a page stops at about 5x,
+  // short of a full-resolution photo's real pixels. Pinch or ctrl-scroll zooms around
+  // the pointer, scrolling or dragging pans, double-click toggles actual pixels, and a
+  // single click closes when not zoomed in. The view is kept in a ref and written
+  // straight to the image's transform so pinching doesn't re-render React.
+  const box = useRef(null);
+  const img = useRef(null);
+
+  useEffect(() => {
+    const el = box.current;
+    const im = img.current;
+    const view = { s: 1, x: 0, y: 0 };
+    const fit = () => Math.min(im.offsetWidth / photo.width, im.offsetHeight / photo.height); // css px per photo px at 1x
+    const actual = () => Math.max(1, 1 / (fit() * devicePixelRatio)); // scale where 1 photo px = 1 screen px
+    const draw = () => {
+      im.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.s})`;
+      el.classList.toggle('zoomed', view.s > 1);
+    };
+    const local = (cx, cy) => {
+      const r = el.getBoundingClientRect();
+      return [cx - r.left - im.offsetLeft, cy - r.top - im.offsetTop];
+    };
+    const clampPan = () => {
+      view.x = Math.min(0, Math.max(im.offsetWidth * (1 - view.s), view.x));
+      view.y = Math.min(0, Math.max(im.offsetHeight * (1 - view.s), view.y));
+    };
+    const zoomAt = (cx, cy, factor) => {
+      const [px, py] = local(cx, cy);
+      const s = Math.min(actual() * 2, Math.max(1, view.s * factor));
+      view.x = px - ((px - view.x) * s) / view.s;
+      view.y = py - ((py - view.y) * s) / view.s;
+      view.s = s;
+      if (s === 1) view.x = view.y = 0;
+      clampPan();
+      draw();
+    };
+    const panBy = (dx, dy) => {
+      view.x += dx;
+      view.y += dy;
+      clampPan();
+      draw();
+    };
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      if (e.ctrlKey) zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.01)); // trackpad pinch, ctrl+wheel
+      else if (view.s > 1) panBy(-e.deltaX, -e.deltaY);
+    };
+    // Safari reports trackpad pinches as gesture events.
+    let gestureScale = 1;
+    const onGestureStart = (e) => { e.preventDefault(); gestureScale = 1; };
+    const onGestureChange = (e) => {
+      e.preventDefault();
+      zoomAt(e.clientX, e.clientY, e.scale / gestureScale);
+      gestureScale = e.scale;
+    };
+
+    // Pointers: one drags, two pinch; a tap closes (when not zoomed) unless a second
+    // tap follows, which toggles actual pixels.
+    const pointers = new Map();
+    let moved = false;
+    let lastTap = null;
+    let closeTimer = 0;
+    const spread = () => {
+      const [a, b] = [...pointers.values()];
+      return [Math.hypot(a.x - b.x, a.y - b.y), (a.x + b.x) / 2, (a.y + b.y) / 2];
+    };
+    let pinch = 0;
+    const onDown = (e) => {
+      try { el.setPointerCapture(e.pointerId); } catch { /* not an active pointer */ }
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pointers.size === 1) moved = false;
+      if (pointers.size === 2) [pinch] = spread();
+    };
+    const onMove = (e) => {
+      const p = pointers.get(e.pointerId);
+      if (!p) return;
+      const dx = e.clientX - p.x;
+      const dy = e.clientY - p.y;
+      p.x = e.clientX;
+      p.y = e.clientY;
+      if (pointers.size === 2) {
+        const [d, mx, my] = spread();
+        if (pinch) zoomAt(mx, my, d / pinch);
+        pinch = d;
+        moved = true;
+      } else if (pointers.size === 1) {
+        if (Math.abs(dx) + Math.abs(dy) > 2) moved = true;
+        if (view.s > 1) panBy(dx, dy);
+      }
+    };
+    const onUp = (e) => {
+      if (!pointers.delete(e.pointerId) || pointers.size) return;
+      pinch = 0;
+      if (moved) return;
+      const now = Date.now();
+      if (lastTap && now - lastTap.t < 300 && Math.hypot(e.clientX - lastTap.x, e.clientY - lastTap.y) < 30) {
+        clearTimeout(closeTimer);
+        lastTap = null;
+        zoomAt(e.clientX, e.clientY, view.s > 1 ? 1 / view.s : actual() / view.s);
+        return;
+      }
+      lastTap = { t: now, x: e.clientX, y: e.clientY };
+      if (view.s === 1) closeTimer = setTimeout(onClose, 300);
+    };
+    const onCancel = (e) => { pointers.delete(e.pointerId); pinch = 0; };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    el.addEventListener('gesturestart', onGestureStart);
+    el.addEventListener('gesturechange', onGestureChange);
+    el.addEventListener('pointerdown', onDown);
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+    el.addEventListener('pointercancel', onCancel);
+    draw();
+    return () => {
+      clearTimeout(closeTimer);
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('gesturestart', onGestureStart);
+      el.removeEventListener('gesturechange', onGestureChange);
+      el.removeEventListener('pointerdown', onDown);
+      el.removeEventListener('pointermove', onMove);
+      el.removeEventListener('pointerup', onUp);
+      el.removeEventListener('pointercancel', onCancel);
+    };
+  }, [photo, onClose]);
+
   return (
-    <div className="lightbox" onClick={onClose}>
-      <img src={shown} alt={photo.alt} />
+    <div className="lightbox" ref={box}>
+      <img ref={img} src={shown} alt={photo.alt} draggable="false" />
     </div>
   );
 };
 
 export const Photography = () => {
   const [open, setOpen] = useState(null);
+  const close = useCallback(() => setOpen(null), []); // stable, so the lightbox keeps its zoom
 
   useEffect(() => {
     if (!open) return;
@@ -128,7 +256,7 @@ export const Photography = () => {
         </div>
       ))}
 
-      {open && <Lightbox photo={open} onClose={() => setOpen(null)} />}
+      {open && <Lightbox photo={open} onClose={close} />}
     </section>
   );
 };
