@@ -146,7 +146,17 @@ h2 { font-size: 30px; line-height: 1.2; margin-bottom: 28px; }
 .company:hover .arrow { color: var(--fg); }
 
 /* ---------- Photography ---------- */
-.gallery { columns: 3 280px; column-gap: 12px; padding-bottom: 32px; }
+.album + .album { margin-top: 48px; }
+.album-head { font-family: var(--font-body); font-size: 19px; font-weight: 500; margin: 0 0 16px; }
+.album-date { color: var(--fg-3); font-weight: 400; margin-left: 8px; }
+/* Rows that fill the width (laid out in Photography.jsx); two columns on narrow screens. */
+.gallery { padding-bottom: 32px; }
+.gallery-row { display: flex; gap: 12px; }
+.gallery-row + .gallery-row { margin-top: 12px; }
+.gallery-row .shot { flex: none; height: 100%; margin: 0; }
+.gallery-row .shot img { height: 100%; object-fit: cover; }
+.gallery.columns { columns: 2; column-gap: 8px; }
+.gallery.columns .shot { margin: 0 0 8px; }
 .shot {
   display: block;
   width: 100%;
@@ -196,6 +206,4 @@ footer {
   nav { flex-wrap: wrap; margin-left: -14px; margin-right: 0; width: calc(100% + 14px); }
   .app:not([data-page="about"]) main { align-items: flex-start; padding-top: 32px; }
   .row { flex-wrap: wrap; row-gap: 4px; }
-  .gallery { columns: 2; column-gap: 8px; }
-  .shot { margin-bottom: 8px; }
 }
