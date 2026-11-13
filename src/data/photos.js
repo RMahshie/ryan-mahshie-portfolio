@@ -15,6 +15,7 @@ const inDir = (dir) => (name, width, height, alt, extra = {}) => ({
 });
 const yosemite = inDir('yosemite');
 const landsEnd = inDir('lands-end');
+const chongqing = inDir('chongqing');
 
 export const albums = [
   {
@@ -40,6 +41,16 @@ export const albums = [
       landsEnd('dsc03946', 4672, 7008, 'Waves breaking around rocks below Lands End'),
       landsEnd('dsc03948', 4672, 7008, 'Golden Gate Bridge through cypress trees'),
       landsEnd('dsc03963', 7008, 4672, 'Birds flying past the Golden Gate Bridge'),
+    ],
+  },
+  {
+    place: 'Chongqing',
+    date: 'May 2026',
+    photos: [
+      chongqing('dsc02738', 4672, 7008, 'Chongqing at night between skyscrapers, with a red bridge over the river'),
+      chongqing('dsc02761', 7008, 4672, 'A lit-up tour boat on the river at night'),
+      chongqing('dsc02764', 7008, 4672, 'Riverside towers lit up at night'),
+      chongqing('pano', 16882, 5750, "Night panorama of Chongqing's skyline along the river", { wide: true }),
     ],
   },
 ];
