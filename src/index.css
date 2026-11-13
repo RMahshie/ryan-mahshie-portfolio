@@ -147,16 +147,14 @@ h2 { font-size: 30px; line-height: 1.2; margin-bottom: 28px; }
 
 /* ---------- Photography ---------- */
 .album + .album { margin-top: 48px; }
-.album-head { font-family: var(--font-body); font-size: 19px; font-weight: 500; margin: 0 0 16px; }
-.album-date { color: var(--fg-3); font-weight: 400; margin-left: 8px; }
-/* Rows that fill the width (laid out in Photography.jsx); two columns on narrow screens. */
+.album-head { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; font-family: var(--font-body); font-size: 19px; font-weight: 500; margin: 0 0 16px; }
+.album-date { color: var(--fg-3); font-weight: 400; white-space: nowrap; }
+/* Rows that fill the width, laid out in Photography.jsx. */
 .gallery { padding-bottom: 32px; }
 .gallery-row { display: flex; gap: 12px; }
 .gallery-row + .gallery-row { margin-top: 12px; }
 .gallery-row .shot { flex: none; height: 100%; margin: 0; }
 .gallery-row .shot img { height: 100%; object-fit: cover; }
-.gallery.columns { columns: 2; column-gap: 8px; }
-.gallery.columns .shot { margin: 0 0 8px; }
 .shot {
   display: block;
   width: 100%;

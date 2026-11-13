@@ -3,35 +3,49 @@ import { albums } from '../data/photos';
 
 const GAP = 12;
 const ROW_HEIGHT = 300; // tallest a row gets; rows shrink to fit the width exactly
-const COLUMNS_BELOW = 700; // narrower than this, two masonry columns read better than rows
+const NARROW = 700; // narrower than this (phones), at most two photos share a row
 
 // rowsFor splits photos into rows that each fill the width at one shared height, so a
-// tall photo never leaves a hole. Leftovers that would fill less than half a row join
-// the row before; otherwise the last row keeps ROW_HEIGHT rather than stretching.
+// tall photo never leaves a hole. A panorama (wide) gets a full-width row to itself,
+// and on narrow screens a row holds at most two photos.
+// A row left unfinished fills the width if that keeps it under 1.4x ROW_HEIGHT, joins
+// the row before if it would cover less than half the width, and otherwise keeps
+// ROW_HEIGHT rather than stretching.
 const rowsFor = (photos, width) => {
+  const perRow = width < NARROW ? 2 : Infinity;
   const rows = [];
   let row = [];
   let ratio = 0;
+  const fill = (ps, r) => (width - GAP * (ps.length - 1)) / r;
+  const finish = () => {
+    if (!row.length) return;
+    const prev = rows.at(-1);
+    if (fill(row, ratio) <= ROW_HEIGHT * 1.4) {
+      rows.push({ photos: row, height: fill(row, ratio) });
+    } else if (prev && !prev.wide && ROW_HEIGHT * ratio < width / 2) {
+      const merged = [...prev.photos, ...row];
+      rows[rows.length - 1] = { photos: merged, height: fill(merged, merged.reduce((a, p) => a + p.width / p.height, 0)) };
+    } else {
+      rows.push({ photos: row, height: ROW_HEIGHT });
+    }
+    row = [];
+    ratio = 0;
+  };
   for (const photo of photos) {
+    if (photo.wide) {
+      finish();
+      rows.push({ photos: [photo], height: (width * photo.height) / photo.width, wide: true });
+      continue;
+    }
     row.push(photo);
     ratio += photo.width / photo.height;
-    const height = (width - GAP * (row.length - 1)) / ratio;
-    if (height <= ROW_HEIGHT) {
-      rows.push({ photos: row, height });
+    if (fill(row, ratio) <= ROW_HEIGHT || row.length >= perRow) {
+      rows.push({ photos: row, height: fill(row, ratio) });
       row = [];
       ratio = 0;
     }
   }
-  if (row.length) {
-    const prev = rows.at(-1);
-    if (prev && ROW_HEIGHT * ratio < width / 2) {
-      const merged = [...prev.photos, ...row];
-      const sum = merged.reduce((a, p) => a + p.width / p.height, 0);
-      rows[rows.length - 1] = { photos: merged, height: (width - GAP * (merged.length - 1)) / sum };
-    } else {
-      rows.push({ photos: row, height: ROW_HEIGHT });
-    }
-  }
+  finish();
   return rows;
 };
 
@@ -47,14 +61,11 @@ const Gallery = ({ photos, onOpen }) => {
   }, []);
 
   const shot = (photo, style) => (
-    <button key={photo.src} className="shot" style={style} onClick={() => onOpen(photo)} aria-label={`Open ${photo.alt}`}>
+    <button key={photo.src} className={photo.wide ? 'shot wide' : 'shot'} style={style} onClick={() => onOpen(photo)} aria-label={`Open ${photo.alt}`}>
       <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" />
     </button>
   );
 
-  if (width && width < COLUMNS_BELOW) {
-    return <div ref={ref} className="gallery columns">{photos.map((photo) => shot(photo))}</div>;
-  }
   return (
     <div ref={ref} className="gallery">
       {width > 0 &&
