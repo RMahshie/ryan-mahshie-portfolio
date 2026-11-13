@@ -67,6 +67,25 @@ const Gallery = ({ photos, onOpen }) => {
   );
 };
 
+// Lightbox shows the gallery-size file at once and swaps in the full-resolution one
+// (a few MB) as soon as it has downloaded.
+const Lightbox = ({ photo, onClose }) => {
+  const [loaded, setLoaded] = useState(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setLoaded(photo.full);
+    img.src = photo.full;
+    return () => { img.onload = null; };
+  }, [photo]);
+
+  return (
+    <div className="lightbox" onClick={onClose}>
+      <img src={loaded === photo.full ? photo.full : photo.src} alt={photo.alt} />
+    </div>
+  );
+};
+
 export const Photography = () => {
   const [open, setOpen] = useState(null);
 
@@ -89,11 +108,7 @@ export const Photography = () => {
         </div>
       ))}
 
-      {open && (
-        <div className="lightbox" onClick={() => setOpen(null)}>
-          <img src={open.full} alt={open.alt} />
-        </div>
-      )}
+      {open && <Lightbox photo={open} onClose={() => setOpen(null)} />}
     </section>
   );
 };
