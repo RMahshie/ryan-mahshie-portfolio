@@ -184,11 +184,16 @@ h2 { font-size: 30px; line-height: 1.2; margin-bottom: 28px; }
   justify-content: center;
   padding: 5vmin;
   background: color-mix(in srgb, var(--bg) 92%, black);
-  cursor: zoom-out;
+  cursor: zoom-in;
+  overflow: hidden;
+  touch-action: none; /* pinches zoom the photo (Photography.jsx), not the page */
+  user-select: none;
   animation: fade 200ms ease;
 }
+.lightbox.zoomed { cursor: grab; }
+.lightbox.zoomed:active { cursor: grabbing; }
 /* Fills the screen whichever file is showing, so the swap to full resolution doesn't jump. */
-.lightbox img { width: 100%; height: 100%; object-fit: contain; }
+.lightbox img { width: 100%; height: 100%; object-fit: contain; transform-origin: 0 0; will-change: transform; }
 @keyframes fade { from { opacity: 0; } }
 
 /* ---------- Footer ---------- */

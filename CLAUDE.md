@@ -30,7 +30,7 @@ Minimal site where the nav switches between pages instead of scrolling. On deskt
 - `src/components/Header.jsx` — Name plus nav links and a Resume link to `public/Ryan_Mahshie_Resume.pdf`
 - `src/components/Footer.jsx` — Email, GitHub, LinkedIn links in the bottom-right
 - `src/pages/` — `About`, `Experience`, `Projects`, `Photography`; content lives in each file as data arrays
-- `src/data/photos.js` — Photo albums (place, date, photos). Each photo has a gallery file and a `-full` file for the click-to-enlarge view, both in `public/photos/<album>/` with camera metadata stripped. The Photography page and nav link stay hidden while there are no photos. `Photography.jsx` lays each album out in rows that fill the width (at most two per row on phones); a photo with `wide: true` (a panorama) gets a row to itself.
+- `src/data/photos.js` — Photo albums (place, date, photos). Each photo has a gallery file and a `-full` file for the click-to-enlarge view, both in `public/photos/<album>/` with camera metadata stripped. The Photography page and nav link stay hidden while there are no photos. `Photography.jsx` lays each album out in rows that fill the width (at most two per row on phones); a photo with `wide: true` (a panorama) gets a row to itself. The full-screen view does its own zoom and pan (pinch, ctrl-scroll, drag, double-click for actual pixels) because browser pinch-zoom stops short of full resolution.
 
 Design: olive background `#1e2712`, cream text `#f2e8c9`. Links are plain text that brightens on hover, with no boxes or underlines. `mockup/index.html` is the standalone mockup the site was built from.
 
